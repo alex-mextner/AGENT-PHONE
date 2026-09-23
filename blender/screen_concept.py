@@ -133,7 +133,7 @@ def add_label(text, location, size=0.0055, align="CENTER"):
 def add_scale_annotations():
     # Top-orthographic labels lie flat in XY, facing +Z by default.
     left = add_label("AGENT-PHONE   94 × 45 mm", (0, 0.071, 0.047), size=0.005)
-    watch = add_label("WATCH ULTRA   49 × 44 mm", (0.058, -0.045, 0.047), size=0.0044)
+    watch = add_label("2 × WATCH ULTRA   each 49 × 44 mm", (0, -0.093, 0.047), size=0.0044)
     return left, watch
 
 

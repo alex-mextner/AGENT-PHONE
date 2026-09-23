@@ -12,7 +12,7 @@ class SceneManifestTests(unittest.TestCase):
 
     def test_every_scene_keeps_correct_orientation_and_open_cuff(self):
         for name, spec in SCENES.items():
-            self.assertEqual(spec["screen_long_axis"], "forearm", name)
+            self.assertEqual(spec["screen_long_axis"], "across_wrist", name)
             self.assertEqual(spec["cuff"], "open", name)
 
     def test_scale_comparison_contains_watch_reference(self):

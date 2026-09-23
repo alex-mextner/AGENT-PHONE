@@ -16,7 +16,7 @@ The public repository should never require a reader to know or care that Blender
 
 The display module is approximately 94 × 45 mm outer size, with an active area around 91 × 42 mm. This is intentionally close to two 49 × 44 mm Apple Watch Ultra cases joined along their 49 mm direction, not a phone-width slab.
 
-The long axis of the module runs along the forearm. The short axis runs across the wrist. A technical comparison render places one Apple Watch Ultra-sized reference block beside the device and labels both dimensions.
+The long axis of the module runs **across the wrist**. The short axis follows the forearm/strap direction. A technical comparison render places **two** Apple Watch Ultra-sized reference blocks side by side with the device and labels the dimensions.
 
 The screen is a single continuous surface. There is no visual split into two watch faces.
 ## Cuff and batteries

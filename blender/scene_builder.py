@@ -164,34 +164,39 @@ def ui_surface(parent, texture, z_local):
     bpy.ops.mesh.primitive_plane_add(size=1)
     plane = bpy.context.object
     plane.name = "Display UI"
-    # Texture's wide U axis becomes world/local Y after a 90° Z rotation.
+    # Texture wide axis maps directly across the wrist (local/world X).
     plane.dimensions = (mm(DISPLAY_ACTIVE_MM[0]), mm(DISPLAY_ACTIVE_MM[1]), 1)
     bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
-    plane.rotation_euler.z = math.radians(90)
-    plane.location = (0, mm(DISPLAY_OUTER_MM[0] / 2), z_local)
+    plane.location = (0, mm(DISPLAY_OUTER_MM[1] / 2), z_local)
     plane.data.materials.append(image_material("UI-" + texture, path))
     plane.parent = parent
     return plane
 
 
-def create_watch_reference():
+def create_watch_reference_pair():
+    """Create two Watch Ultra-sized blocks side by side for direct scale proof."""
+
     metal = material("Watch reference metal", (0.18, 0.19, 0.21), metallic=0.8, roughness=0.24)
     glass = material("Watch reference glass", (0.01, 0.012, 0.016), metallic=0.05, roughness=0.12)
-    body = rounded_box(
-        "Apple Watch Ultra size reference",
-        (mm(58), 0, mm(31)),
-        (mm(WATCH_ULTRA_MM[1]), mm(WATCH_ULTRA_MM[0]), mm(WATCH_ULTRA_MM[2])),
-        metal,
-        bevel=mm(6),
-    )
-    top = rounded_box(
-        "Watch reference glass",
-        (mm(58), 0, mm(38.3)),
-        (mm(41), mm(46), mm(0.8)),
-        glass,
-        bevel=mm(5),
-    )
-    return body, top
+    objects = []
+    y = -mm(58)
+    for index, x in enumerate((-mm(25.0), mm(25.0)), start=1):
+        body = rounded_box(
+            f"Apple Watch Ultra size reference {index}",
+            (x, y, mm(31)),
+            (mm(WATCH_ULTRA_MM[0]), mm(WATCH_ULTRA_MM[1]), mm(WATCH_ULTRA_MM[2])),
+            metal,
+            bevel=mm(6),
+        )
+        top = rounded_box(
+            f"Watch reference glass {index}",
+            (x, y, mm(38.3)),
+            (mm(46), mm(41), mm(0.8)),
+            glass,
+            bevel=mm(5),
+        )
+        objects.extend((body, top))
+    return objects
 
 
 def create_wrist_proxy(profile="average"):
@@ -244,7 +249,7 @@ def build_product_scene(
     objects["base"] = rounded_box(
         "Central base",
         (0, 0, base_z),
-        (mm(52), mm(50), mm(BASE_THICKNESS_MM)),
+        (mm(72), mm(38), mm(BASE_THICKNESS_MM)),
         dark,
         bevel=mm(4),
     )
@@ -254,20 +259,20 @@ def build_product_scene(
     objects["carrier"] = rounded_box(
         "Thin tilt carrier",
         (0, 0, carrier_z + carrier_offset),
-        (mm(41), mm(88), mm(CARRIER_THICKNESS_MM)),
+        (mm(84), mm(38), mm(CARRIER_THICKNESS_MM)),
         carrier_mat,
         bevel=mm(2),
     )
 
     # Hinge sits at the rear short edge; axis runs across the wrist (X).
-    pivot_y = -mm(DISPLAY_OUTER_MM[0] / 2)
+    pivot_y = -mm(DISPLAY_OUTER_MM[1] / 2)
     pivot_z = carrier_z + mm(CARRIER_THICKNESS_MM / 2) + mm(0.45) + carrier_offset
-    for index, x in enumerate((-mm(13.5), mm(13.5)), start=1):
+    for index, x in enumerate((-mm(30.0), mm(30.0)), start=1):
         objects[f"hinge_{index}"] = cylinder(
             f"Recessed hinge {index}",
             (x, pivot_y + mm(0.8), pivot_z),
             mm(HINGE_PIN_DIAMETER_MM / 2),
-            mm(7.5),
+            mm(10.0),
             carrier_mat,
             axis="X",
         )
@@ -282,11 +287,11 @@ def build_product_scene(
     frame = rounded_box(
         "Display module",
         (0, 0, 0),
-        (mm(DISPLAY_OUTER_MM[1]), mm(DISPLAY_OUTER_MM[0]), mm(DISPLAY_OUTER_MM[2])),
+        (mm(DISPLAY_OUTER_MM[0]), mm(DISPLAY_OUTER_MM[1]), mm(DISPLAY_OUTER_MM[2])),
         frame_mat,
         bevel=mm(4.5),
     )
-    frame.location = (0, mm(DISPLAY_OUTER_MM[0] / 2), mm(DISPLAY_OUTER_MM[2] / 2))
+    frame.location = (0, mm(DISPLAY_OUTER_MM[1] / 2), mm(DISPLAY_OUTER_MM[2] / 2))
     frame.parent = pivot
     objects["display_frame"] = frame
 
@@ -294,11 +299,11 @@ def build_product_scene(
     glass = rounded_box(
         "Edge-to-edge cover glass",
         (0, 0, 0),
-        (mm(44.6), mm(93.6), mm(GLASS_THICKNESS_MM)),
+        (mm(93.6), mm(44.6), mm(GLASS_THICKNESS_MM)),
         glass_mat,
         bevel=mm(4.2),
     )
-    glass.location = (0, mm(DISPLAY_OUTER_MM[0] / 2), glass_z)
+    glass.location = (0, mm(DISPLAY_OUTER_MM[1] / 2), glass_z)
     glass.parent = pivot
     objects["glass"] = glass
     ui = ui_surface(pivot, texture, glass_z + mm(0.5))
@@ -326,13 +331,14 @@ def build_product_scene(
             )
 
     if watch_reference:
-        objects["watch_reference"], objects["watch_reference_glass"] = create_watch_reference()
+        for index, obj in enumerate(create_watch_reference_pair(), start=1):
+            objects[f"watch_reference_{index}"] = obj
 
     # Minimum bottom clearance relative to the carrier top, computed at the
     # local bottom corners of the display envelope.
     angle = math.radians(tilt_deg)
     offset = pivot.location.z - (carrier_z + mm(CARRIER_THICKNESS_MM / 2))
-    local_bottom_z = min(0.0, mm(DISPLAY_OUTER_MM[0]) * math.sin(angle))
+    local_bottom_z = min(0.0, mm(DISPLAY_OUTER_MM[1]) * math.sin(angle))
     minimum_clearance = offset + local_bottom_z
 
     # The open underside gap is controlled by the plate end angles. For the

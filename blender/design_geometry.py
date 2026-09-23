@@ -8,7 +8,7 @@ DISPLAY_OUTER_MM = (94.0, 45.0, 6.2)  # long, short, total module thickness
 DISPLAY_ACTIVE_MM = (91.0, 42.0)
 WATCH_ULTRA_MM = (49.0, 44.0, 14.4)
 
-SCREEN_LONG_AXIS = "forearm"
+SCREEN_LONG_AXIS = "across_wrist"
 TILT_ANGLES_DEG = (0, 30, 55)
 
 WRIST_MODEL_MM = {
@@ -69,8 +69,8 @@ def validate_geometry():
     """Return a list of human-readable violations of the baseline."""
 
     errors = []
-    if SCREEN_LONG_AXIS != "forearm":
-        errors.append("display long axis must run along the forearm")
+    if SCREEN_LONG_AXIS != "across_wrist":
+        errors.append("display long axis must run across the wrist")
     if DISPLAY_OUTER_MM[0] > WATCH_ULTRA_MM[0] * 2:
         errors.append("display is longer than two Watch Ultra cases")
     if DISPLAY_OUTER_MM[1] > WATCH_ULTRA_MM[1] + 1.0:

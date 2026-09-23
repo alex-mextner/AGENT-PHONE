@@ -12,7 +12,7 @@
 
 ## Global Constraints
 - Display outer target: 94 × 45 mm; active area about 91 × 42 mm.
-- Long display axis runs along the forearm; short axis runs across the wrist.
+- Long display axis runs across the wrist; short axis follows the forearm/strap direction.
 - Main device uses an open cuff; no rigid underside battery/clasp.
 - Edge-to-edge glass with approximately 0.7–1.5 mm visible structural border.
 - Hinge/carrier is visually recessed; no large central exposed barrel.
@@ -40,7 +40,7 @@ Produces: repository-copy invariants used by later documentation.
 ### Task 2: Measured geometry contract
 Files: blender/design_geometry.py, tests/test_design_geometry.py, SPEC.md
 Produces: DISPLAY_OUTER_MM, DISPLAY_ACTIVE_MM, WATCH_ULTRA_MM, WRIST_MODEL_MM, CUFF_GAP_MM, TILT_ANGLES_DEG, validate_geometry().
-- [ ] Write failing tests: outer=(94,45,6.2), active=(91,42), watch=(49,44,14.4), long axis=forearm, cuff gap>=28, bezel<=1.5, tilt includes 0/30/55.
+- [ ] Write failing tests: outer=(94,45,6.2), active=(91,42), watch=(49,44,14.4), long axis=across_wrist, cuff gap>=28, bezel<=1.5, tilt includes 0/30/55.
 - [ ] Run: python3 -m unittest tests.test_design_geometry -v. Expected: FAIL because module is absent.
 - [ ] Implement constants and validator; update SPEC orientation/dimensions.
 - [ ] Re-run. Expected: PASS.
@@ -58,9 +58,9 @@ Produces textures: home, chat, marketplace, split, remote, blind-input, research
 ### Task 4: Rebuild Blender product geometry
 Files: blender/screen_concept.py, blender/scene_builder.py, blender/validate_scene.py, tests/test_scene_manifest.py
 Consumes geometry constants and UI texture names; produces mechanical/lifestyle scene manifest and renders.
-- [ ] Write failing manifest tests requiring comparison, closed, 30°, 55°, underside, exploded, detached, and lifestyle scene names; require screen_long_axis=forearm, cuff=open, watch_reference=true on comparison.
+- [ ] Write failing manifest tests requiring comparison, closed, 30°, 55°, underside, exploded, detached, and lifestyle scene names; require screen_long_axis=across_wrist, cuff=open, watch_reference=true on comparison.
 - [ ] Run tests. Expected: FAIL.
-- [ ] Implement elliptical wrist coordinate system, continuous left/right curved cuff battery plates with open underside, thin base, forearm-oriented display, edge-to-edge glass, recessed pivots/carrier, detachable module, and 49×44 mm Watch Ultra reference.
+- [ ] Implement elliptical wrist coordinate system, continuous curved cuff battery plates with open underside, thin base, across-wrist display, edge-to-edge glass, recessed pivots/carrier, detachable module, and two 49×44 mm Watch Ultra references.
 - [ ] Add Blender-side validation of object dimensions, cuff gap, and display/base clearance at 0/30/55°; emit JSON report and nonzero exit on violation.
 - [ ] Run headless validation with Blender. Expected: PASS.
 - [ ] Commit: render: rebuild measured open-cuff product geometry

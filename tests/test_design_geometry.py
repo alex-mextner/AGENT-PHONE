@@ -21,8 +21,8 @@ class DesignGeometryTests(unittest.TestCase):
         self.assertLessEqual(DISPLAY_OUTER_MM[0], WATCH_ULTRA_MM[0] * 2)
         self.assertLessEqual(DISPLAY_OUTER_MM[1], WATCH_ULTRA_MM[1] + 1.0)
 
-    def test_long_axis_is_rotated_relative_to_old_render(self):
-        self.assertEqual(SCREEN_LONG_AXIS, "forearm")
+    def test_long_axis_is_across_wrist_like_two_watch_ultras_side_by_side(self):
+        self.assertEqual(SCREEN_LONG_AXIS, "across_wrist")
 
     def test_open_cuff_leaves_desk_contact_zone_free(self):
         self.assertGreaterEqual(CUFF_GAP_MM, 28.0)

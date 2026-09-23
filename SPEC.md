@@ -18,8 +18,8 @@ It is deliberately not a replacement for every screen. Video and long-form visua
 Prototype envelope:
 - outer module target: about **94 × 45 × 6.2 mm**;
 - active display target: about **91 × 42 mm**, close to two Apple Watch Ultra cases joined into one uninterrupted surface;
-- the **long display axis runs along the forearm**; this explicitly rotates the old Blender concept by 90°;
-- UI remains a landscape workspace relative to the user's reading direction when the display tilts toward the face;
+- the **long display axis runs across the wrist**, approximately like two Apple Watch Ultra cases side by side; this explicitly rotates the old Blender concept by 90°;
+- the short axis follows the forearm/strap direction; UI remains a landscape workspace when the display tilts toward the face;
 - visible structural border stays under the edge-to-edge glass at roughly 0.7–1.5 mm;
 - rounded corners and no visual split between "two watches."
 
@@ -39,7 +39,7 @@ There is no rigid battery pack or clasp at the underside of the wrist, because t
 
 The hinge must visually disappear when closed. The first prototype uses a thin carrier plate that stays with the base:
 - two short friction pivots, approximately 2.2–3.0 mm diameter, recessed below one **short edge** of the module;
-- hinge axis runs **across the wrist**, perpendicular to the display's long forearm axis;
+- hinge axis runs **across the wrist**, parallel to the display's long axis;
 - closed, ~30° and ~55° positions;
 - a hard mechanical stop before ~70°;
 - no large central barrel or exposed camera-style hinge.

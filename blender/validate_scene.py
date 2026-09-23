@@ -28,8 +28,8 @@ def validate_flat_dimensions():
     built = build_product_scene(tilt_deg=0, texture=None, include_wrist_proxy=True)
     module = built["objects"]["display_frame"]
     dims = tuple(round(metres_to_mm(v), 3) for v in module.dimensions)
-    # X is short across-wrist, Y is long along-forearm, Z is thickness.
-    expected = (DISPLAY_OUTER_MM[1], DISPLAY_OUTER_MM[0], DISPLAY_OUTER_MM[2])
+    # X is the long across-wrist axis; Y is the short forearm axis.
+    expected = (DISPLAY_OUTER_MM[0], DISPLAY_OUTER_MM[1], DISPLAY_OUTER_MM[2])
     errors = []
     for axis, actual, exp in zip("XYZ", dims, expected):
         if not approx(actual, exp):
@@ -37,8 +37,8 @@ def validate_flat_dimensions():
     gap = built["metadata"]["underside_gap_mm"]
     if gap < CUFF_GAP_MM:
         errors.append(f"underside gap {gap} mm < {CUFF_GAP_MM} mm")
-    if built["metadata"]["screen_long_axis"] != "forearm":
-        errors.append("screen long axis is not forearm")
+    if built["metadata"]["screen_long_axis"] != "across_wrist":
+        errors.append("screen long axis is not across_wrist")
     return errors, {"display_dimensions_mm": dims, "underside_gap_mm": gap}
 
 
