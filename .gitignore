@@ -7,3 +7,4 @@ renders/*.tmp
 .superpowers/
 renders/previews/
 renders/validation.json
+assets/human/cache/
