@@ -16,10 +16,11 @@ It is deliberately not a replacement for every screen. Video and long-form visua
 ### 2.1 Display module
 
 Prototype envelope:
-- active display target: about 96–102 mm × 40–44 mm — approximately two Watch Ultra-sized faces side by side;
-- landscape aspect ratio roughly 2.2–2.5:1, with UI designed as a wide workspace;
-- left/right visual border target below 1 mm where manufacturable;
-- module thickness target: 5.5–6.5 mm before protective glass curvature;
+- outer module target: about **94 × 45 × 6.2 mm**;
+- active display target: about **91 × 42 mm**, close to two Apple Watch Ultra cases joined into one uninterrupted surface;
+- the **long display axis runs along the forearm**; this explicitly rotates the old Blender concept by 90°;
+- UI remains a landscape workspace relative to the user's reading direction when the display tilts toward the face;
+- visible structural border stays under the edge-to-edge glass at roughly 0.7–1.5 mm;
 - rounded corners and no visual split between "two watches."
 
 The display module contains the primary SoC, RAM/storage, eSIM radio path, antennas that cannot live in the base, microphones, wireless radios, haptics/audio interfaces, and a small reserve cell.
@@ -28,18 +29,18 @@ The display module contains the primary SoC, RAM/storage, eSIM radio path, anten
 
 The base remains on the wrist. It holds the main battery, power management, wrist sensors, the haptic actuator, and the mechanical carrier for the detachable module.
 
-Two battery wings extend **along the wrist/cuff direction** from the top and bottom edges of the base. They curve around the wrist and become the transition into the body of the cuff. They must not protrude from the left and right sides of the screen.
+The main batteries live in two curved cuff plates that descend around the **left and right sides of the wrist** from the central base. They follow the wrist circumference, remain physically continuous with the base, and stop before the underside desk-contact zone. They must never read as detached battery bars.
 
-The base model is a wraparound bracelet/cuff rather than a conventional watch strap with a buckle. A Dive variant may use a secure buckle/ratchet for wetsuit use.
+The base model is an **open bracelet/cuff** rather than a conventional watch strap with a buckle. A Dive variant may use a secure buckle/ratchet for wetsuit use.
 
 There is no rigid battery pack or clasp at the underside of the wrist, because that surface contacts a desk, keyboard and laptop.
 
 ### 2.3 Hidden tilt mechanism
 
 The hinge must visually disappear when closed. The first prototype uses a thin carrier plate that stays with the base:
-- two short friction barrels, approximately 2.2–3.0 mm diameter, recessed below the far long edge;
-- hinge axis parallel to the long edge of the screen;
-- closed, ~30° and ~60° positions;
+- two short friction pivots, approximately 2.2–3.0 mm diameter, recessed below one **short edge** of the module;
+- hinge axis runs **across the wrist**, perpendicular to the display's long forearm axis;
+- closed, ~30° and ~55° positions;
 - a hard mechanical stop before ~70°;
 - no large central barrel or exposed camera-style hinge.
 
