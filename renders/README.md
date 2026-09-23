@@ -1,6 +1,6 @@
-# Blender renders
+# Concept renders
 
-These images are generated from `blender/screen_concept.py`.
+These images document the current industrial-design and interaction concept. Implementation details for generating them live in [`blender/`](../blender/README.md).
 
 | View | What it proves |
 |---|---|
