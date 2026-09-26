@@ -4,3 +4,7 @@
 __pycache__/
 *.pyc
 renders/*.tmp
+.superpowers/
+renders/previews/
+renders/validation.json
+assets/human/cache/

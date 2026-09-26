@@ -1,5 +1,7 @@
 # Visual references
 
+See the **[visual moodboard](moodboard.md)** for the image-led comparison board with `KEEP / AVOID / WHY` notes.
+
 This page is a design critique, not a mood-board to copy. External images remain hosted by their original sources; this repository does not redistribute those image files. Rights remain with their respective owners.
 
 ## Fallout — Pip-Boy
