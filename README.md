@@ -19,14 +19,16 @@ The product explores a simple premise: a personal computer should not need to oc
 - Nearly borderless left/right edges.
 - A very thin hidden tilt carrier so the wrist can rest naturally while the display faces the user.
 - A detachable compute/display module with only a short-duration reserve battery.
-- Most battery mass lives in the cuff/base and two curved battery wings continuing **above and below the screen in the strap direction**.
+- Most battery mass lives in the cuff/base and two curved battery plates integrated into the sides of the open cuff.
+- An optional **external endurance battery** can move much more energy to the torso (underarm or lower back) through a flat clothing-integrated cable.
 - Base model uses a wraparound cuff rather than a conventional buckle; Dive variant can use a secure clasp.
 - No rigid battery brick under the wrist.
 - eSIM only; no physical SIM.
 - No games by design. Video and long-form visual work should prefer a larger nearby display.
-- Optional glasses provide gaze, spatial context and a low-duty-cycle display.
+- Optional glasses provide gaze, spatial context and a low-duty-cycle display; paired bone-conduction/private audio can read results back without lighting the wrist.
 - Optional ring(s) provide tactile, spatial and eyes-free controls.
 - A detachable camera tile handles deliberate photography better than pointing the whole wrist at a subject.
+- Nearby displays are first-class outputs: TV/monitor, glasses and **car HUD** can receive the current navigation, media or task context instead of forcing it onto the wrist.
 
 ## Telekinesis input
 
@@ -50,6 +52,7 @@ See [AGENT hardware × Agent OS](docs/agent-os.md).
 - [Hardware architecture](docs/hardware-architecture.md)
 - [Prototype BOM and sourcing](docs/bom.md)
 - [Product and distribution strategy](docs/product-strategy.md)
+- [Critical phone-failure scenarios](docs/critical-scenarios.md)
 - [Deep research: keyboardless input](docs/input-research.md)
 - [Ring and spatial input](docs/ring-and-spatial-input.md)
 - [Camera strategy](docs/camera-strategy.md)
@@ -85,8 +88,10 @@ This repository is a research and industrial-design prototype. Dimensions, batte
 
 The [concept-render gallery](renders/) shows the device on-wrist, its tilt/detach mechanics, and representative interfaces. Current written specs remain the authority for dimensions and behavior while the physical prototype evolves.
 
-![AGENT home UI on wrist](renders/hero-home.png)
+![AGENT-PHONE home/status on wrist](renders/home-status.png)
 
-![Tilted chat UI](renders/tilted-chat.png)
+![AGENT-PHONE chat list + thread](renders/chat-list-thread.png)
+
+![AGENT-PHONE car HUD handoff](renders/car-hud.png)
 
 See [the full render set](renders/README.md).

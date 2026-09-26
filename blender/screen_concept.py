@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from blender.context_props import add_context
+from blender.human_asset import load_makehuman_wrist
 from blender.render_plan import RENDER_PLAN
 from blender.scene_manifest import SCENES
 from blender.scene_builder import (
@@ -84,8 +86,8 @@ def setup_ground():
 
 def create_camera(camera_kind):
     if camera_kind == "top-ortho":
-        location, target, lens = (0, 0.012, 0.24), (0, 0.015, 0.025), 70
-        ortho_scale = 0.175
+        location, target, lens = (0, -0.020, 0.24), (0, -0.020, 0.025), 70
+        ortho_scale = 0.230
     elif camera_kind == "side-ortho":
         location, target, lens = (0.22, 0, 0.065), (0, 0.012, 0.025), 70
         ortho_scale = 0.145
@@ -93,16 +95,16 @@ def create_camera(camera_kind):
         location, target, lens = (0.13, 0.10, -0.12), (0, 0, 0.0), 70
         ortho_scale = None
     elif camera_kind == "exploded":
-        location, target, lens = (0.14, 0.16, 0.15), (0, 0.01, 0.055), 74
+        location, target, lens = (0.19, 0.22, 0.20), (0, 0.005, 0.055), 70
         ortho_scale = None
     elif camera_kind == "desk":
-        location, target, lens = (0.18, 0.16, 0.085), (0, 0.015, 0.018), 68
+        location, target, lens = (0.19, -0.14, 0.075), (0, -0.005, 0.010), 72
         ortho_scale = None
     elif camera_kind == "context":
-        location, target, lens = (0.16, 0.19, 0.13), (0, 0.012, 0.028), 62
+        location, target, lens = (0.25, -0.22, 0.17), (0, 0.055, 0.055), 58
         ortho_scale = None
     else:
-        location, target, lens = (0.15, 0.18, 0.12), (0, 0.015, 0.027), 68
+        location, target, lens = (0.135, -0.165, 0.095), (0, -0.008, 0.026), 78
         ortho_scale = None
 
     bpy.ops.object.camera_add(location=location)
@@ -126,14 +128,18 @@ def add_label(text, location, size=0.0055, align="CENTER"):
     obj.data.align_y = "CENTER"
     obj.data.size = size
     obj.data.extrude = 0.00005
-    obj.data.materials.append(material("Label", (0.72, 0.76, 0.82), roughness=0.38))
+    label_mat = material("Label", (0.82, 0.86, 0.92), roughness=0.32)
+    bsdf = label_mat.node_tree.nodes.get("Principled BSDF")
+    bsdf.inputs["Emission Color"].default_value = (0.82, 0.86, 0.92, 1.0)
+    bsdf.inputs["Emission Strength"].default_value = 4.0
+    obj.data.materials.append(label_mat)
     return obj
 
 
 def add_scale_annotations():
     # Top-orthographic labels lie flat in XY, facing +Z by default.
-    left = add_label("AGENT-PHONE   94 × 45 mm", (0, 0.071, 0.047), size=0.005)
-    watch = add_label("2 × WATCH ULTRA   each 49 × 44 mm", (0, -0.093, 0.047), size=0.0044)
+    left = add_label("AGENT-PHONE   94 × 45 mm", (0, 0.066, 0.080), size=0.0055)
+    watch = add_label("2 × WATCH ULTRA   each 49 × 44 mm", (0, -0.093, 0.080), size=0.0048)
     return left, watch
 
 
@@ -142,14 +148,23 @@ def build_scene(name):
     plan = RENDER_PLAN[name]
     technical = plan["camera"] in {"top-ortho", "side-ortho", "underside", "exploded"} or name == "detached-module"
 
+    human_profile = plan.get("human_profile")
+    human = None
+    if human_profile:
+        human = load_makehuman_wrist(profile=human_profile, side="right")
+        human["object"].location.y += plan.get("human_offset_y_mm", 24.0) / 1000.0
+
     built = build_product_scene(
         tilt_deg=manifest.get("tilt_deg", 18),
         texture=manifest.get("texture"),
         include_wrist_proxy=plan.get("wrist_proxy", True),
+        wrist_profile=human_profile or "average",
         watch_reference=plan.get("watch_reference", False),
         exploded=(name == "mechanism-exploded"),
         detached=(name == "detached-module"),
     )
+    built["human"] = human
+    built["context_objects"] = add_context(plan.get("context"))
 
     setup_world()
     setup_lighting()

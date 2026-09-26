@@ -34,6 +34,8 @@ SCENES = {
     "desk-clearance": {**BASE, "texture": "chat", "tilt_deg": 24},
     "outdoor-navigation": {**BASE, "texture": "navigation", "tilt_deg": 18},
     "dive-concept": {**BASE, "texture": "home", "tilt_deg": 10},
+    "external-battery": {**BASE, "texture": "home", "tilt_deg": 16},
+    "car-hud": {**BASE, "texture": "navigation", "tilt_deg": 12},
 }
 
 def scene_names():

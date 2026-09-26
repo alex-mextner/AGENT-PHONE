@@ -13,6 +13,8 @@ if str(ROOT) not in sys.path:
 
 from blender.design_geometry import (
     BASE_THICKNESS_MM,
+    BASE_FOOTPRINT_MM,
+    CARRIER_FOOTPRINT_MM,
     CARRIER_THICKNESS_MM,
     CUFF_GAP_MM,
     CUFF_PLATE_THICKNESS_MM,
@@ -229,7 +231,7 @@ def build_product_scene(
 ):
     dark = material("Cuff shell", (0.035, 0.042, 0.052), metallic=0.5, roughness=0.3)
     battery = material("Battery plate shell", (0.055, 0.064, 0.077), metallic=0.62, roughness=0.28)
-    carrier_mat = material("Tilt carrier", (0.12, 0.13, 0.15), metallic=0.72, roughness=0.25)
+    carrier_mat = material("Tilt carrier", (0.035, 0.042, 0.052), metallic=0.62, roughness=0.30)
     frame_mat = material("Display subframe", (0.055, 0.062, 0.074), metallic=0.75, roughness=0.22)
     glass_mat = material("Edge glass", (0.008, 0.011, 0.016), metallic=0.05, roughness=0.08)
     contact_mat = material("Pogo contacts", (0.62, 0.38, 0.08), metallic=0.8, roughness=0.22)
@@ -249,7 +251,7 @@ def build_product_scene(
     objects["base"] = rounded_box(
         "Central base",
         (0, 0, base_z),
-        (mm(72), mm(38), mm(BASE_THICKNESS_MM)),
+        (mm(BASE_FOOTPRINT_MM[0]), mm(BASE_FOOTPRINT_MM[1]), mm(BASE_THICKNESS_MM)),
         dark,
         bevel=mm(4),
     )
@@ -259,7 +261,7 @@ def build_product_scene(
     objects["carrier"] = rounded_box(
         "Thin tilt carrier",
         (0, 0, carrier_z + carrier_offset),
-        (mm(84), mm(38), mm(CARRIER_THICKNESS_MM)),
+        (mm(CARRIER_FOOTPRINT_MM[0]), mm(CARRIER_FOOTPRINT_MM[1]), mm(CARRIER_THICKNESS_MM)),
         carrier_mat,
         bevel=mm(2),
     )
@@ -267,7 +269,7 @@ def build_product_scene(
     # Hinge sits at the rear short edge; axis runs across the wrist (X).
     pivot_y = -mm(DISPLAY_OUTER_MM[1] / 2)
     pivot_z = carrier_z + mm(CARRIER_THICKNESS_MM / 2) + mm(0.45) + carrier_offset
-    for index, x in enumerate((-mm(30.0), mm(30.0)), start=1):
+    for index, x in enumerate((-mm(24.0), mm(24.0)), start=1):
         objects[f"hinge_{index}"] = cylinder(
             f"Recessed hinge {index}",
             (x, pivot_y + mm(0.8), pivot_z),

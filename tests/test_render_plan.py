@@ -12,7 +12,7 @@ class RenderPlanTests(unittest.TestCase):
             "tilt-55": "side-ortho",
             "open-cuff-underside": "underside",
             "mechanism-exploded": "exploded",
-            "detached-module": "hero",
+            "detached-module": "exploded",
         }
         for name, camera in expected.items():
             self.assertIn(name, RENDER_PLAN)

@@ -24,6 +24,8 @@ CUFF_GAP_MM = 32.0
 CUFF_PLATE_THICKNESS_MM = 5.2
 CUFF_PLATE_WIDTH_MM = 34.0
 BASE_THICKNESS_MM = 4.0
+BASE_FOOTPRINT_MM = (60.0, 30.0)
+CARRIER_FOOTPRINT_MM = (66.0, 22.0)
 GLASS_THICKNESS_MM = 0.9
 CARRIER_THICKNESS_MM = 1.2
 HINGE_PIN_DIAMETER_MM = 2.2
@@ -56,6 +58,8 @@ REQUIRED_LIFESTYLE_SCENES = (
     "desk-clearance",
     "outdoor-navigation",
     "dive-concept",
+    "external-battery",
+    "car-hud",
 )
 
 

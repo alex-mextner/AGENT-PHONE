@@ -79,7 +79,7 @@ Primary visual tasks:
 - AI assistant status and results;
 - quick document/credential views.
 
-Video should offer "play here" only as an exception and otherwise suggest the nearest trusted TV/display. Games are intentionally absent.
+Video should offer "play here" only as an exception and otherwise suggest the nearest trusted TV/display. Navigation and driving-relevant state may hand off to a compatible car HUD; non-driving notifications should be suppressed while driving. Games are intentionally absent.
 
 ## 4. Screen-off composition
 
@@ -117,14 +117,16 @@ Sensor fusion should combine sEMG, IMU, PPG, ring motion, optional UWB and glass
 
 Optional companion nodes:
 - **Agent Ring** with IMU, tactile/capacitive input, squeeze sensing and optional UWB/health sensing;
-- glasses with a low-duty-cycle display, gaze sensing and camera-based spatial context;
-- earbuds/headphones for private TTS, bone/air audio and acoustic silent-speech experiments;
+- glasses with a low-duty-cycle display, **gaze**/eye tracking and camera-based spatial context;
+- earbuds/headphones or temple audio for private TTS and **bone-conduction**/air audio;
+- glasses/earbuds/neck wearables as an R&D path for deliberate **silent articulation** and tongue/jaw sensing using acoustic, ultrasonic, optical, EMG, PPG or strain signals;
 - necklace/choker for optical PPG, strain or throat sensing;
 - pendant as a microphone/compute/radio accessory;
 - detachable camera tile for deliberate photography;
-- optional external battery pack for exceptional endurance.
+- optional external endurance battery worn at the **underarm**, **lower back** / sacrum, or another low-interference torso position, connected with a flat clothing-integrated cable;
+- nearby trusted displays including TV/monitor and **car HUD**.
 
-AGENT remains independently usable without these accessories.
+AGENT remains independently usable without these accessories. Silent-articulation sensing is deliberate, personalized input; the system must not claim passive thought reading.
 
 ## 7. Camera model
 

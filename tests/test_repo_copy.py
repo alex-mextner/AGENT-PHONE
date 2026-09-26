@@ -23,6 +23,30 @@ class RepoCopyTests(unittest.TestCase):
         text = (ROOT / ".gitignore").read_text()
         self.assertIn(".superpowers/", text)
 
+    def test_gallery_publishes_new_render_set_not_rejected_baseline(self):
+        text = (ROOT / "renders" / "README.md").read_text()
+        for image in (
+            "home-status.png",
+            "chat-list-thread.png",
+            "scale-comparison.png",
+            "open-cuff-underside.png",
+            "ring-spatial.png",
+            "glasses-companion.png",
+            "external-battery.png",
+            "car-hud.png",
+        ):
+            self.assertIn(image, text)
+        self.assertNotIn("hero-home.png", text)
+        self.assertNotIn("tilted-chat.png", text)
+        for rejected in (
+            "hero-home.png",
+            "tilted-chat.png",
+            "remote-control.png",
+            "side-profile.png",
+            "screen-concept.blend",
+        ):
+            self.assertFalse((ROOT / "renders" / rejected).exists(), rejected)
+
 
 if __name__ == "__main__":
     unittest.main()

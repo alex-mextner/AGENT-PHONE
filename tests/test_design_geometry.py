@@ -8,6 +8,8 @@ from blender.design_geometry import (
     CUFF_GAP_MM,
     TILT_ANGLES_DEG,
     SCREEN_LONG_AXIS,
+    BASE_FOOTPRINT_MM,
+    CARRIER_FOOTPRINT_MM,
     visible_bezel_mm,
     validate_geometry,
 )
@@ -32,6 +34,12 @@ class DesignGeometryTests(unittest.TestCase):
         left_right, short_ends = visible_bezel_mm()
         self.assertLessEqual(left_right, 1.5)
         self.assertLessEqual(short_ends, 1.5)
+
+    def test_hidden_base_and_carrier_stay_visually_smaller_than_display(self):
+        self.assertLessEqual(BASE_FOOTPRINT_MM[0], 64.0)
+        self.assertLessEqual(BASE_FOOTPRINT_MM[1], 32.0)
+        self.assertLessEqual(CARRIER_FOOTPRINT_MM[0], 70.0)
+        self.assertLessEqual(CARRIER_FOOTPRINT_MM[1], 24.0)
 
     def test_tilt_states_cover_closed_reading_and_high_tilt(self):
         self.assertIn(0, TILT_ANGLES_DEG)

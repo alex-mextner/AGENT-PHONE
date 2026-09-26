@@ -1,4 +1,4 @@
-# Blender render pipeline
+# Render pipeline
 
 Requires Blender 5.x and Python 3 with Pillow for UI texture generation.
 
@@ -8,25 +8,35 @@ Requires Blender 5.x and Python 3 with Pillow for UI texture generation.
 python3 blender/generate_ui.py
 ```
 
-## Render all concept views
+## Fetch the licensed human asset
 
-On macOS with Blender installed in Applications:
+```bash
+python3 blender/fetch_human_asset.py
+```
+
+MakeHuman graphical assets are cached under `assets/human/cache/` and are not committed. Source/license details live in `assets/human/README.md`.
+
+## Render concept views
 
 ```bash
 /Applications/Blender.app/Contents/MacOS/Blender --background --python blender/screen_concept.py
 ```
 
-The script writes PNG files to `renders/` and saves `renders/screen-concept.blend`.
+Use `-- --scene car-hud`, `-- --scene ring-spatial`, or another scene name for one render. Add `-- --preview` for the lower-resolution preview path.
+
+The current source checkpoint is `renders/agent-phone-concept.blend`.
 
 ## Design intent encoded by the model
 
-- wide ~100 × 34 mm landscape screen;
-- sub-millimeter-looking left/right glass borders;
-- battery wings above and below the screen, following the strap direction;
-- no rigid battery block under the wrist;
-- two small recessed hinge barrels instead of a giant central hinge;
-- detachable screen/carrier architecture;
-- UI states are rendered on the worn device;
-- one exploded view is included to explain the mechanism.
+- 94 × 45 mm module: approximately two Watch Ultra-sized faces side by side;
+- long display axis **across the wrist**;
+- edge-to-edge glass with a subordinate structural rim;
+- two curved battery plates integrated into the open cuff;
+- rigid cuff stops before the underside desk-contact zone;
+- recessed tilt mechanism with 0° / 30° / 55° validation states;
+- detachable display/compute module with a small reserve cell;
+- licensed MakeHuman wrist/hand asset for lifestyle scenes;
+- companion contexts for TV handoff, ring, glasses/private audio, camera tile, external battery, Dive clasp, desk/laptop and car HUD;
+- every public UI state is rendered on the worn device.
 
-This is an industrial-design massing model, not a production CAD model.
+This remains an industrial-design massing model, not production CAD.
