@@ -1,0 +1,10 @@
+================================================================
+slice-check: fit-gauges-TPU-first.3mf
+  binary: /Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer
+================================================================
+  OPEN:   PASS  size_x = 74.999832; size_y = 45.165680; size_z = 6.000000; number_of_facets = 2004; manifold = yes; number_of_parts =  1; size_x = 68.999840; size_y = 42.008606; number_of_facets = 1964; size_x = 62.999863; size_y = 37.328133; number_of_facets = 1932
+  PLATES: PASS  1 (expected 1)
+  SLICE:  skipped (--no-slice)
+================================================================
+STATUS: PASS - opens OK, 1 plate(s) (slice skipped: --no-slice)
+================================================================

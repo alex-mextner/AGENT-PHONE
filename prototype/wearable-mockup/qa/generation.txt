@@ -1,0 +1,32 @@
+{
+  "slim": {
+    "profile": "slim",
+    "errors": [],
+    "underside_opening_mm": 46.556,
+    "required_total_spread_mm": 6.444,
+    "nut_thread_overlap_mm": 2.3,
+    "screw_end_recess_mm": 1.2,
+    "ballast_capacity_steel_g": 55.923,
+    "method": "volumetric Boolean interference of modeled closed solids; simplified thread envelopes, no strength/comfort certification"
+  },
+  "average": {
+    "profile": "average",
+    "errors": [],
+    "underside_opening_mm": 51.492,
+    "required_total_spread_mm": 7.508,
+    "nut_thread_overlap_mm": 2.3,
+    "screw_end_recess_mm": 1.2,
+    "ballast_capacity_steel_g": 55.923,
+    "method": "volumetric Boolean interference of modeled closed solids; simplified thread envelopes, no strength/comfort certification"
+  },
+  "large": {
+    "profile": "large",
+    "errors": [],
+    "underside_opening_mm": 56.402,
+    "required_total_spread_mm": 8.598,
+    "nut_thread_overlap_mm": 2.3,
+    "screw_end_recess_mm": 1.2,
+    "ballast_capacity_steel_g": 55.923,
+    "method": "volumetric Boolean interference of modeled closed solids; simplified thread envelopes, no strength/comfort certification"
+  }
+}

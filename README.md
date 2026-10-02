@@ -86,7 +86,9 @@ This repository is a research and industrial-design prototype. Dimensions, batte
 
 ## Concept renders
 
-The [concept-render gallery](renders/) shows the device on-wrist, its tilt/detach mechanics, and representative interfaces. Current written specs remain the authority for dimensions and behavior while the physical prototype evolves.
+The [concept-render gallery](renders/) shows the 92 × 44 × 6.6 mm along-arm device on-wrist, its tilt/detach mechanics, and representative interfaces. Renders are Blender prototype visualizations, not photographs or accepted hardware. Current written specs remain the authority for dimensions and behavior while the physical prototype evolves. Note: 6.6 mm is the module envelope; the evaluated complete closed assembly stands about 14.8 mm above nominal proxy skin (tilt 0°, average profile; real skin/hardware unvalidated).
+
+An inert size/weight fit kit (1:1 dummies, calibration cube, paper template, blank diary) and a proposed seven-day trial protocol live in [prototype/fit-kit/](prototype/fit-kit/). No wear trial has been run.
 
 ![AGENT-PHONE home/status on wrist](renders/home-status.png)
 
@@ -95,3 +97,7 @@ The [concept-render gallery](renders/) shows the device on-wrist, its tilt/detac
 ![AGENT-PHONE car HUD handoff](renders/car-hud.png)
 
 See [the full render set](renders/README.md).
+
+## Printable wearable mass-and-size mockup
+
+The complete inert closed-position print assembly is in [prototype/wearable-mockup](prototype/wearable-mockup/README.md), including paired central TPU cuffs, full fit gauges, retained ballast and material-separated 3MF plates. Start with the [Russian print quickstart](prototype/wearable-mockup/QUICKSTART-RU.md). This is distinct from the earlier screen-block fit kit. Module thickness is 6.6 mm; the modeled complete closed top is 14.8 mm above nominal skin. Physical print and wear trials remain unperformed.

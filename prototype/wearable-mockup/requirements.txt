@@ -1,0 +1,6 @@
+numpy==2.4.6
+trimesh==4.12.2
+manifold3d==3.5.1
+pillow==12.2.0
+networkx==3.6.1
+lxml==6.1.3

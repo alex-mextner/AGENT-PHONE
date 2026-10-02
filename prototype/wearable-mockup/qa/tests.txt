@@ -1,0 +1,13 @@
+test_collision_verifier_rejects_a_displaced_lid (tests.test_wearable_mockup.WearableMechanicalContracts.test_collision_verifier_rejects_a_displaced_lid) ... ok
+test_complete_assembly_contract_exists (tests.test_wearable_mockup.WearableMechanicalContracts.test_complete_assembly_contract_exists) ... ok
+test_export_manifest_contains_paired_cuffs_and_full_gauges (tests.test_wearable_mockup.WearableMechanicalContracts.test_export_manifest_contains_paired_cuffs_and_full_gauges) ... ok
+test_export_report_is_bound_to_current_source (tests.test_wearable_mockup.WearableMechanicalContracts.test_export_report_is_bound_to_current_source) ... ok
+test_exported_meshes_and_assembly_transforms (tests.test_wearable_mockup.WearableMechanicalContracts.test_exported_meshes_and_assembly_transforms) ... ok
+test_mass_boundaries_are_not_safety_limits (tests.test_wearable_mockup.WearableMechanicalContracts.test_mass_boundaries_are_not_safety_limits) ... ok
+test_mass_capacity_rejects_impossible_loads (tests.test_wearable_mockup.WearableMechanicalContracts.test_mass_capacity_rejects_impossible_loads) ... ok
+test_real_solid_assembly_and_hardware (tests.test_wearable_mockup.WearableMechanicalContracts.test_real_solid_assembly_and_hardware) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.655s
+
+OK

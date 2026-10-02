@@ -12,21 +12,30 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from blender.design_geometry import (
-    BASE_THICKNESS_MM,
     BASE_FOOTPRINT_MM,
+    BASE_THICKNESS_MM,
     CARRIER_FOOTPRINT_MM,
     CARRIER_THICKNESS_MM,
+    COVER_GLASS_MM,
+    CUFF_ATTACH_ANGLE_DEG,
+    CUFF_END_ANGLE_DEG,
+    CUFF_END_WIDTH_MM,
     CUFF_GAP_MM,
+    CUFF_MID_WIDTH_MM,
     CUFF_PLATE_THICKNESS_MM,
-    CUFF_PLATE_WIDTH_MM,
+    CUFF_Z_OFFSET_MM,
     DISPLAY_ACTIVE_MM,
     DISPLAY_OUTER_MM,
     GLASS_THICKNESS_MM,
+    HINGE_INSET_MM,
     HINGE_PIN_DIAMETER_MM,
     SCREEN_LONG_AXIS,
     WATCH_ULTRA_MM,
     WRIST_MODEL_MM,
+    cuff_width_at_fraction,
 )
+
+from blender.rounded_mesh import rounded_plate, rounded_surface
 
 UI_DIR = ROOT / "blender" / "ui"
 
@@ -96,17 +105,18 @@ def cuff_segment(name, side, wrist_width_mm, wrist_thickness_mm, mat, steps=32):
     thickness = mm(CUFF_PLATE_THICKNESS_MM)
     outer_rx = inner_rx + thickness
     outer_rz = inner_rz + thickness
-    y_half = mm(CUFF_PLATE_WIDTH_MM / 2)
 
-    start = math.radians(20 * side)
-    end = math.radians(145 * side)
+    start = math.radians(CUFF_ATTACH_ANGLE_DEG * side)
+    end = math.radians(CUFF_END_ANGLE_DEG * side)
     angles = [start + (end - start) * i / steps for i in range(steps + 1)]
 
     vertices = []
-    for angle in angles:
+    for step_index, angle in enumerate(angles):
+        fraction = step_index / steps
+        y_half = mm(cuff_width_at_fraction(fraction) / 2)
         for radius_x, radius_z in ((inner_rx, inner_rz), (outer_rx, outer_rz)):
             x = radius_x * math.sin(angle)
-            z = radius_z * math.cos(angle)
+            z = radius_z * math.cos(angle) + mm(CUFF_Z_OFFSET_MM)
             vertices.append((x, -y_half, z))
             vertices.append((x, y_half, z))
 
@@ -129,9 +139,17 @@ def cuff_segment(name, side, wrist_width_mm, wrist_thickness_mm, mat, steps=32):
     mesh = bpy.data.meshes.new(name + "Mesh")
     mesh.from_pydata(vertices, [], faces)
     mesh.update()
+    import bmesh
+    bm = bmesh.new()
+    bm.from_mesh(mesh)
+    bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+    bm.to_mesh(mesh)
+    bm.free()
     obj = bpy.data.objects.new(name, mesh)
     bpy.context.collection.objects.link(obj)
     obj.data.materials.append(mat)
+    for polygon in obj.data.polygons:
+        polygon.use_smooth = True
 
     bevel = obj.modifiers.new("soft plate edges", "BEVEL")
     bevel.width = mm(0.9)
@@ -158,47 +176,41 @@ def image_material(name, path):
 
 
 def ui_surface(parent, texture, z_local):
-    if not texture:
-        return None
-    path = UI_DIR / f"{texture}.png"
-    if not path.exists():
-        raise FileNotFoundError(f"UI texture missing: {path}")
-    bpy.ops.mesh.primitive_plane_add(size=1)
-    plane = bpy.context.object
-    plane.name = "Display UI"
-    # Texture wide axis maps directly across the wrist (local/world X).
-    plane.dimensions = (mm(DISPLAY_ACTIVE_MM[0]), mm(DISPLAY_ACTIVE_MM[1]), 1)
-    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
-    plane.location = (0, mm(DISPLAY_OUTER_MM[1] / 2), z_local)
-    plane.data.materials.append(image_material("UI-" + texture, path))
+    if texture:
+        path = UI_DIR / f"{texture}.png"
+        if not path.exists():
+            raise FileNotFoundError(f"UI texture missing: {path}")
+        mat = image_material("UI-" + texture, path)
+    else:
+        mat = material("OLED off", (0.004, 0.006, 0.009), roughness=0.16)
+    plane = rounded_surface("Display UI", (mm(DISPLAY_ACTIVE_MM[0]), mm(DISPLAY_ACTIVE_MM[1])), mat)
+    plane.rotation_euler.z = math.pi / 2
+    plane.location = (0, mm(DISPLAY_OUTER_MM[0]/2-HINGE_INSET_MM), z_local)
     plane.parent = parent
     return plane
 
 
-def create_watch_reference_pair():
-    """Create two Watch Ultra-sized blocks side by side for direct scale proof."""
+def create_watch_reference():
+    """Create one Watch Ultra-sized reference beside the along-arm device."""
 
     metal = material("Watch reference metal", (0.18, 0.19, 0.21), metallic=0.8, roughness=0.24)
     glass = material("Watch reference glass", (0.01, 0.012, 0.016), metallic=0.05, roughness=0.12)
-    objects = []
-    y = -mm(58)
-    for index, x in enumerate((-mm(25.0), mm(25.0)), start=1):
-        body = rounded_box(
-            f"Apple Watch Ultra size reference {index}",
-            (x, y, mm(31)),
-            (mm(WATCH_ULTRA_MM[0]), mm(WATCH_ULTRA_MM[1]), mm(WATCH_ULTRA_MM[2])),
-            metal,
-            bevel=mm(6),
-        )
-        top = rounded_box(
-            f"Watch reference glass {index}",
-            (x, y, mm(38.3)),
-            (mm(46), mm(41), mm(0.8)),
-            glass,
-            bevel=mm(5),
-        )
-        objects.extend((body, top))
-    return objects
+    x = -mm(64.0)
+    body = rounded_box(
+        "Apple Watch Ultra size reference",
+        (x, 0, mm(31)),
+        (mm(WATCH_ULTRA_MM[1]), mm(WATCH_ULTRA_MM[0]), mm(WATCH_ULTRA_MM[2])),
+        metal,
+        bevel=mm(6),
+    )
+    top = rounded_box(
+        "Watch reference glass",
+        (x, 0, mm(38.3)),
+        (mm(41), mm(46), mm(0.8)),
+        glass,
+        bevel=mm(5),
+    )
+    return [body, top]
 
 
 def create_wrist_proxy(profile="average"):
@@ -230,7 +242,7 @@ def build_product_scene(
     detached=False,
 ):
     dark = material("Cuff shell", (0.035, 0.042, 0.052), metallic=0.5, roughness=0.3)
-    battery = material("Battery plate shell", (0.055, 0.064, 0.077), metallic=0.62, roughness=0.28)
+    battery = material("Polymer cuff support", (0.028, 0.033, 0.040), metallic=0.0, roughness=0.48)
     carrier_mat = material("Tilt carrier", (0.035, 0.042, 0.052), metallic=0.62, roughness=0.30)
     frame_mat = material("Display subframe", (0.055, 0.062, 0.074), metallic=0.75, roughness=0.22)
     glass_mat = material("Edge glass", (0.008, 0.011, 0.016), metallic=0.05, roughness=0.08)
@@ -266,15 +278,15 @@ def build_product_scene(
         bevel=mm(2),
     )
 
-    # Hinge sits at the rear short edge; axis runs across the wrist (X).
-    pivot_y = -mm(DISPLAY_OUTER_MM[1] / 2)
+    # Hinge is inset from the rear display edge and sits on the carrier end.
+    pivot_y = -mm(CARRIER_FOOTPRINT_MM[1] / 2)
     pivot_z = carrier_z + mm(CARRIER_THICKNESS_MM / 2) + mm(0.45) + carrier_offset
-    for index, x in enumerate((-mm(24.0), mm(24.0)), start=1):
+    for index, x in enumerate((-mm(7.0), mm(7.0)), start=1):
         objects[f"hinge_{index}"] = cylinder(
             f"Recessed hinge {index}",
-            (x, pivot_y + mm(0.8), pivot_z),
+            (x, pivot_y + mm(1.0), pivot_z),
             mm(HINGE_PIN_DIAMETER_MM / 2),
-            mm(10.0),
+            mm(8.0),
             carrier_mat,
             axis="X",
         )
@@ -286,29 +298,30 @@ def build_product_scene(
     if detached:
         pivot.location.x += mm(34)
 
-    frame = rounded_box(
+    frame_height = DISPLAY_OUTER_MM[2] - GLASS_THICKNESS_MM - 0.05
+    frame = rounded_plate(
         "Display module",
         (0, 0, 0),
-        (mm(DISPLAY_OUTER_MM[0]), mm(DISPLAY_OUTER_MM[1]), mm(DISPLAY_OUTER_MM[2])),
+        (mm(DISPLAY_OUTER_MM[1]), mm(DISPLAY_OUTER_MM[0]), mm(frame_height)),
         frame_mat,
-        bevel=mm(4.5),
+        radius=mm(5.0),
     )
-    frame.location = (0, mm(DISPLAY_OUTER_MM[1] / 2), mm(DISPLAY_OUTER_MM[2] / 2))
+    frame.location = (0, mm(DISPLAY_OUTER_MM[0] / 2 - HINGE_INSET_MM), mm(frame_height / 2))
     frame.parent = pivot
     objects["display_frame"] = frame
 
-    glass_z = mm(DISPLAY_OUTER_MM[2]) + mm(GLASS_THICKNESS_MM / 2) - mm(0.35)
-    glass = rounded_box(
+    glass_z = mm(frame_height + GLASS_THICKNESS_MM / 2)
+    glass = rounded_plate(
         "Edge-to-edge cover glass",
         (0, 0, 0),
-        (mm(93.6), mm(44.6), mm(GLASS_THICKNESS_MM)),
+        (mm(COVER_GLASS_MM[1]), mm(COVER_GLASS_MM[0]), mm(GLASS_THICKNESS_MM)),
         glass_mat,
-        bevel=mm(4.2),
+        radius=mm(4.6),
     )
-    glass.location = (0, mm(DISPLAY_OUTER_MM[1] / 2), glass_z)
+    glass.location = (0, mm(DISPLAY_OUTER_MM[0] / 2 - HINGE_INSET_MM), glass_z)
     glass.parent = pivot
     objects["glass"] = glass
-    ui = ui_surface(pivot, texture, glass_z + mm(0.5))
+    ui = ui_surface(pivot, texture, mm(DISPLAY_OUTER_MM[2]))
     if ui:
         objects["ui"] = ui
 
@@ -333,27 +346,31 @@ def build_product_scene(
             )
 
     if watch_reference:
-        for index, obj in enumerate(create_watch_reference_pair(), start=1):
+        for index, obj in enumerate(create_watch_reference(), start=1):
             objects[f"watch_reference_{index}"] = obj
 
     # Minimum bottom clearance relative to the carrier top, computed at the
     # local bottom corners of the display envelope.
     angle = math.radians(tilt_deg)
     offset = pivot.location.z - (carrier_z + mm(CARRIER_THICKNESS_MM / 2))
-    local_bottom_z = min(0.0, mm(DISPLAY_OUTER_MM[1]) * math.sin(angle))
+    local_bottom_z = min(0.0, mm(DISPLAY_OUTER_MM[0]) * math.sin(angle))
     minimum_clearance = offset + local_bottom_z
 
-    # The open underside gap is controlled by the plate end angles. For the
-    # chosen ellipse, the chord between plate ends is kept >= design minimum.
-    endpoint_angle = math.radians(145)
+    # The open underside gap is the actual chord between tapered cuff tips.
+    endpoint_angle = math.radians(CUFF_END_ANGLE_DEG)
     inner_rx = mm(wrist_width / 2 + 1.8)
     endpoint_x = abs(inner_rx * math.sin(endpoint_angle))
-    underside_gap_mm = max(CUFF_GAP_MM, metres_to_mm(endpoint_x * 2))
+    underside_gap_mm = metres_to_mm(endpoint_x * 2)
 
     metadata = {
         "screen_long_axis": SCREEN_LONG_AXIS,
         "underside_gap_mm": round(underside_gap_mm, 3),
-        "minimum_screen_clearance_mm": round(metres_to_mm(minimum_clearance), 3),
+        "cuff_end_width_mm": CUFF_END_WIDTH_MM,
+        "cuff_mid_width_mm": CUFF_MID_WIDTH_MM,
+        # Nominal analytic hinge offset (construction parameter), NOT a measured
+        # minimum clearance. Measured values live in validate_scene tilt_clearance_mm
+        # (intersecting_triangle_pairs + sampled_min_gap_mm).
+        "nominal_hinge_offset_mm": round(metres_to_mm(minimum_clearance), 3),
         "tilt_deg": tilt_deg,
     }
     return {"objects": objects, "metadata": metadata, "pivot": pivot}

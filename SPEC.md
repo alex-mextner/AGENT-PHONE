@@ -16,12 +16,16 @@ It is deliberately not a replacement for every screen. Video and long-form visua
 ### 2.1 Display module
 
 Prototype envelope:
-- outer module target: about **94 × 45 × 6.2 mm**;
-- active display target: about **91 × 42 mm**, close to two Apple Watch Ultra cases joined into one uninterrupted surface;
-- the **long display axis runs across the wrist**, approximately like two Apple Watch Ultra cases side by side; this explicitly rotates the old Blender concept by 90°;
-- the short axis follows the forearm/strap direction; UI remains a landscape workspace when the display tilts toward the face;
-- visible structural border stays under the edge-to-edge glass at roughly 0.7–1.5 mm;
-- rounded corners and no visual split between "two watches."
+- outer module target: about **92 × 44 × 6.6 mm**, where 6.6 mm is the complete display/module envelope including glass, not an allowance above it;
+- active display target: about **89.8 × 40.6 mm** under 91.2 × 43.2 mm cover glass, close to one uninterrupted wide surface;
+- the **long display axis runs along the forearm**; a single 49 × 44 mm Apple Watch Ultra footprint is the scale reference, not a pair;
+- the short axis runs across the wrist; UI remains a landscape workspace when the display tilts toward the face;
+- visible structural border stays under the edge-to-edge glass at roughly 0.7–1.7 mm;
+- rounded corners and no visual split.
+
+Closed-stack note (evaluated, not assumed): the complete closed assembly (tilt 0°) stands about **14.8 mm above nominal proxy skin** (measured product top 35.8 mm vs 21.0 mm proxy skin top on the average profile; see `renders/validation.json` `closed_stack_mm`). The 6.6 mm above is the module envelope only, not the whole worn stack. Real skin/hardware unvalidated.
+
+This supersedes the earlier across-wrist 94 × 45 mm plan (GH-4): older documents and archived renders describing two Watch references side by side across the wrist are historical, not the current design.
 
 The display module contains the primary SoC, RAM/storage, eSIM radio path, antennas that cannot live in the base, microphones, wireless radios, haptics/audio interfaces, and a small reserve cell.
 
@@ -29,7 +33,7 @@ The display module contains the primary SoC, RAM/storage, eSIM radio path, anten
 
 The base remains on the wrist. It holds the main battery, power management, wrist sensors, the haptic actuator, and the mechanical carrier for the detachable module.
 
-The main batteries live in two curved cuff plates that descend around the **left and right sides of the wrist** from the central base. They follow the wrist circumference, remain physically continuous with the base, and stop before the underside desk-contact zone. They must never read as detached battery bars.
+Two thin polymer cuff supports attach around the **middle of the long module sides** (centered along the 92 mm axis, not at the ends) and descend on the **left and right sides of the wrist**. Each support is narrow at the module attachment and at the free tip (about 12 mm) and broad in the curved middle (about 28 mm), following the wrist without crossing the underside. They remain physically continuous with the base and stop before the underside desk-contact zone, leaving an open hand-entry gap of roughly 48 mm (nominal underside gap; donning/retention unvalidated). They must never read as end hooks, detached battery bars, or a rigid underside block. Battery-mass placement inside these supports is a packaging study, not a validated envelope.
 
 The base model is an **open bracelet/cuff** rather than a conventional watch strap with a buckle. A Dive variant may use a secure buckle/ratchet for wetsuit use.
 
@@ -38,8 +42,8 @@ There is no rigid battery pack or clasp at the underside of the wrist, because t
 ### 2.3 Hidden tilt mechanism
 
 The hinge must visually disappear when closed. The first prototype uses a thin carrier plate that stays with the base:
-- two short friction pivots, approximately 2.2–3.0 mm diameter, recessed below one **short edge** of the module;
-- hinge axis runs **across the wrist**, parallel to the display's long axis;
+- two short friction pivots, approximately 2.2 mm diameter, recessed near the **distal short end** of the module (about 8 mm inset);
+- hinge axis runs **across the wrist**, so the long along-arm module tips up toward the face;
 - closed, ~30° and ~55° positions;
 - a hard mechanical stop before ~70°;
 - no large central barrel or exposed camera-style hinge.
@@ -174,3 +178,7 @@ A prototype is useful only if it proves ergonomics:
 - screen module cannot release from a knock;
 - battery wings do not collide with wrist bones across a test set of wrist sizes;
 - all UI demo states are shown on an actual wrist render.
+
+### Inert print-study implementation
+
+The [wearable print study](prototype/wearable-mockup/README.md) uses a fixed-closed, four-through-bolt dorsal sandwich, not the production tilt mechanism. It preserves the 92 × 44 × 6.6 mm module and 14.8 mm nominal above-skin top. Hidden two-bolt TPU flanges provide central attachment; exposed supports are thin, broad in the middle and taper towards their ends. A shared flat axial face makes side printing practical; this is a documented asymmetric-taper manufacturing choice, not end-mounted hooks. The complete cavity gauges and three nominal wrist profiles are not a personalized fit. CAD clearances, printability and offline slicing do not establish comfort, retention or production packaging.

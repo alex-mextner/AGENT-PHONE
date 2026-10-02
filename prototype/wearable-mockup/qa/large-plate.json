@@ -1,0 +1,77 @@
+{
+  "bed": 220.0,
+  "gap": 6.0,
+  "mode": "single",
+  "parts": [
+    {
+      "depth": 47.97029495239258,
+      "mesh_index": 0,
+      "name": "cuff_left_large",
+      "width": 29.5
+    },
+    {
+      "depth": 47.97029495239258,
+      "mesh_index": 1,
+      "name": "cuff_right_large",
+      "width": 29.5
+    },
+    {
+      "depth": 36.0,
+      "mesh_index": 2,
+      "name": "dorsal_pad",
+      "width": 40.0
+    }
+  ],
+  "plates": [
+    {
+      "index": 1,
+      "placements": [
+        {
+          "depth": 47.97029495239258,
+          "mesh_index": 0,
+          "name": "cuff_left_large",
+          "width": 29.5,
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "depth": 47.97029495239258,
+          "mesh_index": 1,
+          "name": "cuff_right_large",
+          "width": 29.5,
+          "x": 35.5,
+          "y": 0.0
+        },
+        {
+          "depth": 36.0,
+          "mesh_index": 2,
+          "name": "dorsal_pad",
+          "width": 40.0,
+          "x": 71.0,
+          "y": 0.0
+        }
+      ]
+    }
+  ],
+  "usable": 204.0,
+  "verification": [
+    {
+      "assigned_objects": 3,
+      "footprints_within_bed": true,
+      "missing_entries": [],
+      "objects": 3,
+      "path": "prototype/wearable-mockup/plates/cuffs-large-TPU.3mf",
+      "plate_footprints": {
+        "0": [
+          111.0,
+          47.97
+        ]
+      },
+      "plates": 1,
+      "reloaded_objects": 3,
+      "settings_plates": 1,
+      "single": true,
+      "within_bed": true
+    }
+  ]
+}

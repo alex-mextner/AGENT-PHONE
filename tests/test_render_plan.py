@@ -7,10 +7,10 @@ class RenderPlanTests(unittest.TestCase):
     def test_required_mechanical_scenes_have_explicit_cameras(self):
         expected = {
             "scale-comparison": "top-ortho",
-            "closed-side": "side-ortho",
-            "tilt-30": "side-ortho",
-            "tilt-55": "side-ortho",
-            "open-cuff-underside": "underside",
+            "closed-side": "tilt-tech",
+            "tilt-30": "tilt-tech",
+            "tilt-55": "tilt-tech",
+            "open-cuff-underside": "underside-wide",
             "mechanism-exploded": "exploded",
             "detached-module": "exploded",
         }
@@ -34,7 +34,9 @@ class RenderPlanTests(unittest.TestCase):
         self.assertFalse(RENDER_PLAN["open-cuff-underside"]["wrist_proxy"])
         self.assertFalse(RENDER_PLAN["mechanism-exploded"]["wrist_proxy"])
         self.assertFalse(RENDER_PLAN["detached-module"]["wrist_proxy"])
-        self.assertTrue(RENDER_PLAN["tilt-55"]["wrist_proxy"])
+        self.assertFalse(RENDER_PLAN["closed-side"]["wrist_proxy"])
+        self.assertFalse(RENDER_PLAN["tilt-30"]["wrist_proxy"])
+        self.assertFalse(RENDER_PLAN["tilt-55"]["wrist_proxy"])
 
 
 if __name__ == "__main__":

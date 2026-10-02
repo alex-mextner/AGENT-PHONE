@@ -1,0 +1,77 @@
+{
+  "bed": 220.0,
+  "gap": 6.0,
+  "mode": "single",
+  "parts": [
+    {
+      "depth": 92.0,
+      "mesh_index": 0,
+      "name": "tray",
+      "width": 44.0
+    },
+    {
+      "depth": 88.0,
+      "mesh_index": 1,
+      "name": "lid",
+      "width": 40.0
+    },
+    {
+      "depth": 36.0,
+      "mesh_index": 2,
+      "name": "base",
+      "width": 40.0
+    }
+  ],
+  "plates": [
+    {
+      "index": 1,
+      "placements": [
+        {
+          "depth": 92.0,
+          "mesh_index": 0,
+          "name": "tray",
+          "width": 44.0,
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "depth": 88.0,
+          "mesh_index": 1,
+          "name": "lid",
+          "width": 40.0,
+          "x": 50.0,
+          "y": 0.0
+        },
+        {
+          "depth": 36.0,
+          "mesh_index": 2,
+          "name": "base",
+          "width": 40.0,
+          "x": 96.0,
+          "y": 0.0
+        }
+      ]
+    }
+  ],
+  "usable": 204.0,
+  "verification": [
+    {
+      "assigned_objects": 3,
+      "footprints_within_bed": true,
+      "missing_entries": [],
+      "objects": 3,
+      "path": "prototype/wearable-mockup/plates/rigid-parts.3mf",
+      "plate_footprints": {
+        "0": [
+          136.0,
+          92.0
+        ]
+      },
+      "plates": 1,
+      "reloaded_objects": 3,
+      "settings_plates": 1,
+      "single": true,
+      "within_bed": true
+    }
+  ]
+}

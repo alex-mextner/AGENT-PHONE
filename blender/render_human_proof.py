@@ -22,7 +22,7 @@ reset_scene()
 human = load_makehuman_wrist(profile="average", side="right")
 # Place the watch slightly proximal to the anatomical wrist crease, as a real
 # watch sits toward the elbow rather than directly on the hand joint.
-human["object"].location.y += 0.024
+human["object"].location.y += 0.055
 built = build_product_scene(
     tilt_deg=22,
     texture="home",

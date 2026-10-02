@@ -1,16 +1,16 @@
 # Concept renders
 
-These images document the current AGENT-PHONE industrial-design and interaction concept. Implementation details for generating them live in [`blender/`](../blender/README.md).
+These images document the current AGENT-PHONE industrial-design and interaction concept. They are Blender prototype visualizations of the 92 × 44 × 6.6 mm along-arm design, not photographs, not accepted hardware, and not comfort or feasibility proof. Implementation details for generating them live in [`blender/`](../blender/README.md).
 
 ## Scale and mechanics
 
 | View | What it proves |
 | --- | --- |
-| ![Scale comparison](scale-comparison.png) | 94 × 45 mm AGENT-PHONE compared directly with two 49 × 44 mm Watch Ultra-sized references |
+| ![Scale comparison](scale-comparison.png) | 92 × 44 mm AGENT-PHONE, long axis along the arm, beside a single 49 × 44 mm Watch Ultra-sized reference |
 | ![Closed side](closed-side.png) | closed thin module over the open cuff |
-| ![Tilt 30](tilt-30.png) | first comfortable reading angle while the arm rests |
+| ![Tilt 30](tilt-30.png) | 30° concept pose for reading while the arm rests; comfort untested |
 | ![Tilt 55](tilt-55.png) | high tilt with the hinge still recessed |
-| ![Open cuff underside](open-cuff-underside.png) | rigid battery plates stop before the desk-contact underside of the wrist |
+| ![Open cuff underside](open-cuff-underside.png) | thin polymer cuff supports, broad in the middle and tapered at the ends, stop before the desk-contact underside of the wrist; open hand-entry gap |
 | ![Exploded mechanism](mechanism-exploded.png) | display/compute module, thin carrier, reserve cell, contacts and cuff separated |
 | ![Detached module](detached-module.png) | removable display/compute module remains a coherent thin object |
 
@@ -30,7 +30,7 @@ These images document the current AGENT-PHONE industrial-design and interaction 
 | ![Ring spatial](ring-spatial.png) | ring + room context for spatial device control |
 | ![Glasses companion](glasses-companion.png) | glasses, gaze/spatial context and private audio companion |
 | ![Camera companion](camera-companion.png) | detachable camera tile with the wrist as controller/viewfinder |
-| ![Desk clearance](desk-clearance.png) | open cuff leaves the underside usable against a desk/laptop |
+| ![Desk clearance](desk-clearance.png) | wrist resting beside a laptop; open cuff leaves the underside usable against a desk. Raised-hand clearance study, not proven resting/typing ergonomics. Nominal underside gap only; donning/retention unvalidated. |
 | ![Outdoor navigation](outdoor-navigation.png) | quick glance navigation |
 | ![Dive concept](dive-concept.png) | secure-clasp variant for water use |
 | ![External battery](external-battery.png) | optional endurance pack + flat power ribbon; torso placement is documented separately |

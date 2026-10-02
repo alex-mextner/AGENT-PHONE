@@ -1,0 +1,15 @@
+================================================================
+slice-check: cuffs-average-TPU.3mf
+  binary: /Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer
+================================================================
+  OPEN:   PASS  size_x = 26.500000; size_y = 44.815582; size_z = 28.000000; number_of_facets = 1956; manifold = yes; number_of_parts =  1
+  PLATES: PASS  1 (expected 1)
+  SLICE:  FAIL  (0 g-code produced)
+  --- slicer log (tail) ---
+    Relative extruder addressing requires resetting the extruder position at each layer to prevent loss of floating point accuracy. Add "G92 E0" to layer_gcode.
+    run found error, exit
+  -------------------------
+================================================================
+STATUS: FAIL (1 check(s) failed)
+  - slicer did not produce G-code for all plates
+================================================================

@@ -1,5 +1,11 @@
 # AGENT-PHONE Visual Rebuild Design
 
+> SUPERSEDED by GH-4 (27 Sept 2026): the current design is a 92 × 44 × 6.6 mm
+> module with its long axis ALONG the forearm, a single Watch Ultra footprint
+> reference, and thin tapered polymer cuff supports attached around the middle
+> of the long module with an open underside. The 94 × 45 mm across-wrist /
+> two-reference geometry below is historical. See SPEC.md and GH-4.
+
 Status: implementation-ready design derived from the user's reviewed handoff and render critique.
 
 ## Outcome

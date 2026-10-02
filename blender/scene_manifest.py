@@ -5,7 +5,7 @@ the gallery contract with ordinary Python.
 """
 
 BASE = {
-    "screen_long_axis": "across_wrist",
+    "screen_long_axis": "along_arm",
     "cuff": "open",
     "watch_reference": False,
     "render_kind": "lifestyle",

@@ -28,10 +28,10 @@ The current source checkpoint is `renders/agent-phone-concept.blend`.
 
 ## Design intent encoded by the model
 
-- 94 × 45 mm module: approximately two Watch Ultra-sized faces side by side;
-- long display axis **across the wrist**;
-- edge-to-edge glass with a subordinate structural rim;
-- two curved battery plates integrated into the open cuff;
+- 92 × 44 × 6.6 mm module (6.6 mm is the complete envelope including glass), long axis **along the arm**;
+- a single Watch Ultra footprint as the scale reference;
+- edge-to-edge glass with a subordinate structural rim (about 0.7–1.7 mm);
+- two thin polymer cuff supports attached around the middle of the long module, broad in the middle (about 28 mm) and tapered at both ends (about 12 mm), leaving the underside open with roughly a 48 mm hand-entry gap; not end hooks;
 - rigid cuff stops before the underside desk-contact zone;
 - recessed tilt mechanism with 0° / 30° / 55° validation states;
 - detachable display/compute module with a small reserve cell;
@@ -40,3 +40,12 @@ The current source checkpoint is `renders/agent-phone-concept.blend`.
 - every public UI state is rendered on the worn device.
 
 This remains an industrial-design massing model, not production CAD.
+
+Collision-scope limits: `collision.py` reports evaluated-mesh triangle
+intersections plus bidirectional vertex-to-surface sampled gaps. Zero
+triangle intersections cannot detect one solid fully enclosed in another
+(no volumetric containment claim); sampling is not an exact edge-edge
+minimum; all checks are static posed fits, not motion, donning, comfort,
+or physical validation. Measured whole-stack height (closed, tilt 0°,
+average proxy) is about 14.8 mm above proxy skin (`closed_stack_mm` in
+`renders/validation.json`), distinct from the 6.6 mm module envelope.

@@ -9,7 +9,7 @@ COMMON = {
     "ground": True,
     "wrist_proxy": True,
     "human_profile": None,
-    "human_offset_y_mm": 24.0,
+    "human_offset_y_mm": 55.0,
     "context": None,
 }
 
@@ -25,16 +25,19 @@ RENDER_PLAN = {
         "watch_reference": True, "texture": None, "wrist_proxy": False,
     },
     "closed-side": {
-        **COMMON, "camera": "side-ortho", "orthographic": True, "texture": None,
+        **COMMON, "camera": "tilt-tech", "texture": None,
+        "ground": False, "wrist_proxy": False,
     },
     "tilt-30": {
-        **COMMON, "camera": "side-ortho", "orthographic": True, "texture": None,
+        **COMMON, "camera": "tilt-tech", "texture": None,
+        "ground": False, "wrist_proxy": False,
     },
     "tilt-55": {
-        **COMMON, "camera": "side-ortho", "orthographic": True, "texture": None,
+        **COMMON, "camera": "tilt-tech", "texture": None,
+        "ground": False, "wrist_proxy": False,
     },
     "open-cuff-underside": {
-        **COMMON, "camera": "underside", "texture": None,
+        **COMMON, "camera": "underside-wide", "texture": None,
         "ground": False, "wrist_proxy": False,
     },
     "mechanism-exploded": {

@@ -24,6 +24,20 @@ assert mat.use_nodes
 image_nodes = [n for n in mat.node_tree.nodes if n.type == "TEX_IMAGE"]
 assert image_nodes and image_nodes[0].image is not None
 assert any(n.type == "TEX_NOISE" for n in mat.node_tree.nodes), "skin micro-noise missing"
-assert any(n.type == "BUMP" for n in mat.node_tree.nodes), "skin bump node missing"
+bump_nodes = [n for n in mat.node_tree.nodes if n.type == "BUMP"]
+assert bump_nodes, "skin bump node missing"
+assert bump_nodes[0].inputs["Distance"].default_value <= 0.001, bump_nodes[0].inputs["Distance"].default_value
+assert any(n.type == "HUE_SAT" for n in mat.node_tree.nodes), "skin tone correction missing"
+bsdf = mat.node_tree.nodes.get("Principled BSDF")
+assert bsdf.inputs["Roughness"].default_value >= 0.52
 assert result["wrist_origin_world"].length < 0.003, result["wrist_origin_world"]
-print("human-runtime: PASS", tuple(round(v, 4) for v in obj.dimensions))
+anchors = result["anchors_world"]
+assert "ring_proximal" in anchors
+assert "ring_middle" in anchors
+assert "index_tip" in anchors
+# Use the anatomical hand plane, not a sign assumption about bent fingers.
+normal = (anchors["pinky_knuckle"]-result["wrist_origin_world"]).cross(
+    anchors["index_knuckle"]-result["wrist_origin_world"])
+assert normal.normalized().z > 0.90, normal
+assert anchors["index_tip"].y > anchors["index_knuckle"].y
+print("human-runtime: PASS", tuple(round(v, 4) for v in obj.dimensions), anchors)

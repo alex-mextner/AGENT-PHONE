@@ -1,0 +1,692 @@
+{
+  "source_sha256": {
+    "generate.py": "442dbbfa70e5ac1f8ab33f39523b7c25c043fe36963389bf1982ce0c5beb7c93",
+    "mockup_params.py": "72cbc3eb9161d244ffce6868d509b929e91dfabfdccfca9c782acacfda29e4d6"
+  },
+  "module_mm_xyz": [
+    44.0,
+    92.0,
+    6.6
+  ],
+  "closed_height_above_skin_mm": 14.8,
+  "nominal_wrist_profiles_mm": {
+    "slim": [
+      52.0,
+      36.0
+    ],
+    "average": [
+      58.0,
+      42.0
+    ],
+    "large": [
+      64.0,
+      46.0
+    ]
+  },
+  "parts": {
+    "tray": {
+      "file": "parts/tray.stl",
+      "material": "PETG",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -22.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -46.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          8.199999809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          44.0,
+          92.0,
+          6.6
+        ]
+      ],
+      "solid_volume_mm3": 8939.851,
+      "solid_fill_mass_estimate_g": 11.354,
+      "sha256": "7701f1e532303d6837f8676dd3d6d032b48e2971b0a20b6b117d9df688aa14c0"
+    },
+    "lid": {
+      "file": "parts/lid.stl",
+      "material": "PETG",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -20.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -44.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          12.600000381
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          40.0,
+          88.0,
+          2.2
+        ]
+      ],
+      "solid_volume_mm3": 7588.229,
+      "solid_fill_mass_estimate_g": 9.637,
+      "sha256": "c2db69a3f79fa044e76e0ef944bc4c0b67e74155398ff0fd9dcd5829253dc96f"
+    },
+    "base": {
+      "file": "parts/base.stl",
+      "material": "PETG",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -20.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          18.0
+        ],
+        [
+          -0.0,
+          -0.0,
+          -1.0,
+          6.199999809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          40.0,
+          36.0,
+          4.8
+        ]
+      ],
+      "solid_volume_mm3": 6375.401,
+      "solid_fill_mass_estimate_g": 8.097,
+      "sha256": "e3ee8037a473b2a20f2053889dc1c8ea11050f480838da1369ff03c56ac42684"
+    },
+    "dorsal_pad": {
+      "file": "parts/dorsal_pad.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -20.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -18.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          40.0,
+          36.0,
+          1.4
+        ]
+      ],
+      "solid_volume_mm3": 1841.902,
+      "solid_fill_mass_estimate_g": 2.229,
+      "sha256": "3d9b0ed9108ebc9ef32f2f8ea046f57ea0a1422c416a0ff8398c09a84cc70726"
+    },
+    "calibration_10mm": {
+      "file": "parts/calibration_10mm.stl",
+      "material": "PETG",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          10.0,
+          10.0,
+          10.0
+        ]
+      ],
+      "solid_volume_mm3": 1000.0,
+      "solid_fill_mass_estimate_g": 1.27,
+      "sha256": "7a679f358c3f9bddcd52205619ab43e009bd3c4f63ede0efba62ac793c0244f0"
+    },
+    "cuff_left_slim": {
+      "file": "parts/cuff_left_slim.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -31.499998093
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -14.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          8.199999809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          23.499998,
+          40.124287,
+          28.0
+        ]
+      ],
+      "solid_volume_mm3": 3232.027,
+      "solid_fill_mass_estimate_g": 3.911,
+      "sha256": "2f719ce0c99c7005b5c2ae3c19049a91141f7a4870cc3879375ce83a0de28680"
+    },
+    "cuff_right_slim": {
+      "file": "parts/cuff_right_slim.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          8.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -14.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          8.199999809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          23.499998,
+          40.124287,
+          28.0
+        ]
+      ],
+      "solid_volume_mm3": 3232.027,
+      "solid_fill_mass_estimate_g": 3.911,
+      "sha256": "1cad9c01c990bae7b23d8a4a750a45f4d8176eceec787d3438bb9912c6f99785"
+    },
+    "fit_gauge_slim": {
+      "file": "parts/fit_gauge_slim.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -31.499929428
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -3.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          5.496846199
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          62.999859,
+          37.32814,
+          6.0
+        ]
+      ],
+      "solid_volume_mm3": 2366.842,
+      "solid_fill_mass_estimate_g": 2.864,
+      "sha256": "e32141f0beb21bf4d0590cf41696a07e035fe26f13a130b7455808341d02bcdb"
+    },
+    "cuff_left_average": {
+      "file": "parts/cuff_left_average.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -34.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -14.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          8.199999809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          26.5,
+          44.815586,
+          28.0
+        ]
+      ],
+      "solid_volume_mm3": 3621.335,
+      "solid_fill_mass_estimate_g": 4.382,
+      "sha256": "e9c5dfcc6c3beb71acb82ea0ed9422ca9d3c8a3df57e92e63ec09c7d8634e376"
+    },
+    "cuff_right_average": {
+      "file": "parts/cuff_right_average.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          8.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -14.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          8.199999809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          26.5,
+          44.815586,
+          28.0
+        ]
+      ],
+      "solid_volume_mm3": 3621.335,
+      "solid_fill_mass_estimate_g": 4.382,
+      "sha256": "f2ba3715b2f86912b29b5cbb40e9f35595e23795b7bad4943efec2cc7d554a94"
+    },
+    "fit_gauge_average": {
+      "file": "parts/fit_gauge_average.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -34.499923706
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -3.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          5.496400356
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          68.999847,
+          42.008606,
+          6.0
+        ]
+      ],
+      "solid_volume_mm3": 2585.637,
+      "solid_fill_mass_estimate_g": 3.129,
+      "sha256": "9e721b90efe75f7fca3d9e2eece0aad0483fb2f6da4518a1493f446528c8e73a"
+    },
+    "cuff_left_large": {
+      "file": "parts/cuff_left_large.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -37.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -14.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          8.199999809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          29.5,
+          47.970295,
+          28.0
+        ]
+      ],
+      "solid_volume_mm3": 3928.949,
+      "solid_fill_mass_estimate_g": 4.754,
+      "sha256": "5a758ab6e4a5fcedd5198398782d2ede987ddbca74af0aa14bec619cee5e14b4"
+    },
+    "cuff_right_large": {
+      "file": "parts/cuff_right_large.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          8.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -14.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          8.199999809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          29.5,
+          47.970295,
+          28.0
+        ]
+      ],
+      "solid_volume_mm3": 3928.949,
+      "solid_fill_mass_estimate_g": 4.754,
+      "sha256": "165af79b1b639ee5e31961e328d3535cba0246ae9e41831edc5da35ddbc255ed"
+    },
+    "fit_gauge_large": {
+      "file": "parts/fit_gauge_large.stl",
+      "material": "TPU",
+      "print_to_assembly": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -37.499916077
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -3.0
+        ],
+        [
+          -0.0,
+          -1.0,
+          0.0,
+          5.496119022
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          74.999832,
+          45.165676,
+          6.0
+        ]
+      ],
+      "solid_volume_mm3": 2762.716,
+      "solid_fill_mass_estimate_g": 3.343,
+      "sha256": "224cd8444caeb91c0b67b2668624e729e90bb21f43406796d37e381098f8dc96"
+    }
+  },
+  "verification": {
+    "slim": {
+      "profile": "slim",
+      "errors": [],
+      "underside_opening_mm": 46.556,
+      "required_total_spread_mm": 6.444,
+      "nut_thread_overlap_mm": 2.3,
+      "screw_end_recess_mm": 1.2,
+      "ballast_capacity_steel_g": 55.923,
+      "method": "volumetric Boolean interference of modeled closed solids; simplified thread envelopes, no strength/comfort certification"
+    },
+    "average": {
+      "profile": "average",
+      "errors": [],
+      "underside_opening_mm": 51.492,
+      "required_total_spread_mm": 7.508,
+      "nut_thread_overlap_mm": 2.3,
+      "screw_end_recess_mm": 1.2,
+      "ballast_capacity_steel_g": 55.923,
+      "method": "volumetric Boolean interference of modeled closed solids; simplified thread envelopes, no strength/comfort certification"
+    },
+    "large": {
+      "profile": "large",
+      "errors": [],
+      "underside_opening_mm": 56.402,
+      "required_total_spread_mm": 8.598,
+      "nut_thread_overlap_mm": 2.3,
+      "screw_end_recess_mm": 1.2,
+      "ballast_capacity_steel_g": 55.923,
+      "method": "volumetric Boolean interference of modeled closed solids; simplified thread envelopes, no strength/comfort certification"
+    }
+  },
+  "physical_print_or_wear_trial": "NOT PERFORMED",
+  "mass_note": "Solid-fill CAD estimates, not slicer or measured masses; weigh the entire assembly including hardware."
+}

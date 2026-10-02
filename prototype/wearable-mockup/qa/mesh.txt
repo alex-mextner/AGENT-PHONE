@@ -1,0 +1,182 @@
+FILE prototype/wearable-mockup/parts/base.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1020 / 504
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 6375.400696009078, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 6375.400696009077
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/calibration_10mm.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 12 / 8
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 1000.0, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 1000.0
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/cuff_left_average.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1956 / 976
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 3621.3353969318296, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 3621.335396931829
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/cuff_left_large.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1956 / 976
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 3928.949273777509, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 3928.949273777509
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/cuff_left_slim.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1956 / 976
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 3232.026683309544, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 3232.0266833095434
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/cuff_right_average.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1956 / 976
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 3621.33540246703, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 3621.33540246703
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/cuff_right_large.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1956 / 976
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 3928.949279312709, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 3928.9492793127083
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/cuff_right_slim.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1956 / 976
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 3232.026677774343, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 3232.0266777743436
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/dorsal_pad.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 284 / 144
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 1841.9017918468849, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 1841.9017918468846
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/fit_gauge_average.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1964 / 984
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 2585.637346915263, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 2585.6373469152636
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/fit_gauge_large.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 2004 / 1004
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 2762.716253222388, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 2762.716253222388
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/fit_gauge_slim.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1932 / 968
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 2366.841715237233, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 2366.8417152372335
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/lid.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 1308 / 648
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 7588.228552464494, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 7588.228552464494
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)
+FILE prototype/wearable-mockup/parts/tray.stl
+========================================================
+MESH CHECK (report 4.1 manifold/watertight gate)
+========================================================
+engine            : trimesh+manifold3d
+faces / vertices  : 2470 / 1229
+watertight        : yes
+manifold          : yes  (edge-manifold=yes, vertex-manifold=unknown, winding=yes)
+self-intersecting : UNVERIFIED
+  detail          : {'via': 'manifold3d', 'm3_status': 'Error.NoError', 'm3_volume_mm3': 8939.850835279116, 'note': 'geometric self-intersection NOT verified (install open3d for the real triangle-triangle test); manifold3d only checks topology'}
+volume (mm^3)     : 8939.850835279109
+========================================================
+>>> MESH CHECK: PASS (self-intersection UNVERIFIED - install open3d for the geometric test)

@@ -1,0 +1,77 @@
+{
+  "bed": 220.0,
+  "gap": 6.0,
+  "mode": "single",
+  "parts": [
+    {
+      "depth": 42.00860595703125,
+      "mesh_index": 0,
+      "name": "fit_gauge_average",
+      "width": 68.99984741210938
+    },
+    {
+      "depth": 45.16567611694336,
+      "mesh_index": 1,
+      "name": "fit_gauge_large",
+      "width": 74.99983215332031
+    },
+    {
+      "depth": 37.32814025878906,
+      "mesh_index": 2,
+      "name": "fit_gauge_slim",
+      "width": 62.99985885620117
+    }
+  ],
+  "plates": [
+    {
+      "index": 1,
+      "placements": [
+        {
+          "depth": 45.16567611694336,
+          "mesh_index": 1,
+          "name": "fit_gauge_large",
+          "width": 74.99983215332031,
+          "x": 0.0,
+          "y": 0.0
+        },
+        {
+          "depth": 42.00860595703125,
+          "mesh_index": 0,
+          "name": "fit_gauge_average",
+          "width": 68.99984741210938,
+          "x": 80.99983215332031,
+          "y": 0.0
+        },
+        {
+          "depth": 37.32814025878906,
+          "mesh_index": 2,
+          "name": "fit_gauge_slim",
+          "width": 62.99985885620117,
+          "x": 0.0,
+          "y": 51.16567611694336
+        }
+      ]
+    }
+  ],
+  "usable": 204.0,
+  "verification": [
+    {
+      "assigned_objects": 3,
+      "footprints_within_bed": true,
+      "missing_entries": [],
+      "objects": 3,
+      "path": "prototype/wearable-mockup/plates/fit-gauges-TPU-first.3mf",
+      "plate_footprints": {
+        "0": [
+          150.0,
+          88.494
+        ]
+      },
+      "plates": 1,
+      "reloaded_objects": 3,
+      "settings_plates": 1,
+      "single": true,
+      "within_bed": true
+    }
+  ]
+}

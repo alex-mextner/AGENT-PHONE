@@ -1,5 +1,9 @@
 # AGENT-PHONE Visual Rebuild Implementation Plan
 
+> SUPERSEDED by GH-4 (27 Sept 2026): 92 × 44 × 6.6 mm along-arm module,
+> single Watch Ultra reference, central tapered cuff supports, open underside.
+> The 94 × 45 mm across-wrist targets below are historical. See SPEC.md.
+
 > For agentic workers: use superpowers:executing-plans task-by-task.
 
 **Goal:** Replace the misleading concept renders with a measured, mechanically coherent, visually credible wrist-computer gallery and a real visual moodboard.

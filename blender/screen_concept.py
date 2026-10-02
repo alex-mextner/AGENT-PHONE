@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from blender.framing import fit_scene_camera
 from blender.context_props import add_context
 from blender.human_asset import load_makehuman_wrist
 from blender.render_plan import RENDER_PLAN
@@ -51,8 +52,8 @@ def setup_world():
     world = bpy.context.scene.world
     world.use_nodes = True
     bg = world.node_tree.nodes.get("Background")
-    bg.inputs["Color"].default_value = (0.006, 0.008, 0.012, 1)
-    bg.inputs["Strength"].default_value = 0.20
+    bg.inputs["Color"].default_value = (0.16, 0.18, 0.21, 1)
+    bg.inputs["Strength"].default_value = 0.5
 
 
 def add_area(name, location, energy, size, color, target=(0, 0, 0.025)):
@@ -68,13 +69,13 @@ def add_area(name, location, energy, size, color, target=(0, 0, 0.025)):
 
 
 def setup_lighting():
-    add_area("Key", (0.12, 0.14, 0.18), 2.6, 0.12, (1.0, 0.88, 0.78))
-    add_area("Fill", (-0.12, 0.05, 0.10), 1.1, 0.10, (0.65, 0.78, 1.0))
-    add_area("Rim", (0.02, -0.16, 0.14), 1.8, 0.09, (0.50, 0.65, 1.0))
+    add_area("Key", (0.20, 0.25, 0.35), 7.0, 0.32, (1.0, 0.94, 0.87))
+    add_area("Fill", (-0.20, -0.10, 0.18), 2.0, 0.24, (0.83, 0.90, 1.0))
+    add_area("Rim", (0.15, -0.20, 0.32), 5.0, 0.28, (0.88, 0.93, 1.0))
 
 
 def setup_ground():
-    ground_mat = material("Studio floor", (0.016, 0.019, 0.024), roughness=0.55)
+    ground_mat = material("Studio floor", (0.19, 0.20, 0.22), roughness=0.7)
     return rounded_box(
         "Studio floor",
         (0, 0, -0.038),
@@ -88,11 +89,11 @@ def create_camera(camera_kind):
     if camera_kind == "top-ortho":
         location, target, lens = (0, -0.020, 0.24), (0, -0.020, 0.025), 70
         ortho_scale = 0.230
-    elif camera_kind == "side-ortho":
-        location, target, lens = (0.22, 0, 0.065), (0, 0.012, 0.025), 70
-        ortho_scale = 0.145
-    elif camera_kind == "underside":
-        location, target, lens = (0.13, 0.10, -0.12), (0, 0, 0.0), 70
+    elif camera_kind == "tilt-tech":
+        location, target, lens = (0.27, -0.27, 0.18), (0, 0.006, 0.020), 68
+        ortho_scale = None
+    elif camera_kind == "underside-wide":
+        location, target, lens = (0.20, -0.20, -0.18), (0, 0, 0.006), 72
         ortho_scale = None
     elif camera_kind == "exploded":
         location, target, lens = (0.19, 0.22, 0.20), (0, 0.005, 0.055), 70
@@ -101,10 +102,10 @@ def create_camera(camera_kind):
         location, target, lens = (0.19, -0.14, 0.075), (0, -0.005, 0.010), 72
         ortho_scale = None
     elif camera_kind == "context":
-        location, target, lens = (0.25, -0.22, 0.17), (0, 0.055, 0.055), 58
+        location, target, lens = (0.33, -0.38, 0.22), (0, 0.095, 0.060), 55
         ortho_scale = None
     else:
-        location, target, lens = (0.135, -0.165, 0.095), (0, -0.008, 0.026), 78
+        location, target, lens = (0.24, -0.29, 0.16), (0, 0.012, 0.030), 68
         ortho_scale = None
 
     bpy.ops.object.camera_add(location=location)
@@ -138,21 +139,24 @@ def add_label(text, location, size=0.0055, align="CENTER"):
 
 def add_scale_annotations():
     # Top-orthographic labels lie flat in XY, facing +Z by default.
-    left = add_label("AGENT-PHONE   94 × 45 mm", (0, 0.066, 0.080), size=0.0055)
-    watch = add_label("2 × WATCH ULTRA   each 49 × 44 mm", (0, -0.093, 0.080), size=0.0048)
-    return left, watch
+    device = add_label("AGENT-PHONE   92 × 44 mm", (0.020, 0.064, 0.080), size=0.0052)
+    watch = add_label("WATCH ULTRA   49 × 44 mm", (-0.064, -0.034, 0.080), size=0.0046)
+    return device, watch
 
 
 def build_scene(name):
     manifest = SCENES[name]
     plan = RENDER_PLAN[name]
-    technical = plan["camera"] in {"top-ortho", "side-ortho", "underside", "exploded"} or name == "detached-module"
+    technical = plan["camera"] in {"top-ortho", "tilt-tech", "underside-wide", "exploded"} or name == "detached-module"
 
     human_profile = plan.get("human_profile")
     human = None
     if human_profile:
         human = load_makehuman_wrist(profile=human_profile, side="right")
-        human["object"].location.y += plan.get("human_offset_y_mm", 24.0) / 1000.0
+        offset_y = plan.get("human_offset_y_mm", 55.0) / 1000.0
+        human["object"].location.y += offset_y
+        for anchor in human["anchors_world"].values():
+            anchor.y += offset_y
 
     built = build_product_scene(
         tilt_deg=manifest.get("tilt_deg", 18),
@@ -164,7 +168,8 @@ def build_scene(name):
         detached=(name == "detached-module"),
     )
     built["human"] = human
-    built["context_objects"] = add_context(plan.get("context"))
+    anchors = human["anchors_world"] if human else None
+    built["context_objects"] = add_context(plan.get("context"), anchors=anchors, skin=human["object"] if human else None)
 
     setup_world()
     setup_lighting()
@@ -178,7 +183,6 @@ def build_scene(name):
 
 def configure_render(preview):
     scene = bpy.context.scene
-    scene.render.engine = "BLENDER_EEVEE"
     res = (1000, 760) if preview else (1800, 1368)
     scene.render.resolution_x, scene.render.resolution_y = res
     scene.render.resolution_percentage = 100
@@ -188,15 +192,24 @@ def configure_render(preview):
     scene.render.image_settings.color_depth = "8"
     scene.render.image_settings.compression = 32
     scene.render.use_file_extension = True
-    scene.render.engine = "BLENDER_EEVEE"
+    if preview:
+        scene.render.engine = "BLENDER_EEVEE"
+    else:
+        scene.render.engine = "CYCLES"
+        scene.cycles.samples = 64
+        scene.cycles.use_denoising = True
     scene.view_settings.look = "AgX - Medium High Contrast"
+    scene.view_settings.exposure = -0.35
+    scene.unit_settings.system = "METRIC"
+    scene.unit_settings.length_unit = "MILLIMETERS"
     return scene
 
 
 def render_one(name, preview=True):
     reset_scene()
-    build_scene(name)
+    built, _ = build_scene(name)
     scene = configure_render(preview)
+    fit_scene_camera(built)
     directory = PREVIEW_OUT if preview else OUT
     if preview:
         directory = PREVIEW_OUT / ("technical" if SCENES[name]["render_kind"] == "technical" else "lifestyle")
@@ -222,9 +235,15 @@ def main():
         render_one(name, preview=args.preview)
 
     if args.save_blend:
-        # Save the final built scene as an inspectable source checkpoint.
+        # Keep the device/hand master inspectable with textures packed, not a
+        # checkpoint of whichever companion happened to render last.
+        reset_scene()
+        built, _ = build_scene("home-status")
+        configure_render(False)
+        fit_scene_camera(built)
+        bpy.ops.file.pack_all()
         path = OUT / "agent-phone-concept.blend"
-        bpy.ops.wm.save_as_mainfile(filepath=str(path))
+        bpy.ops.wm.save_as_mainfile(filepath=str(path), compress=True)
         print(f"SAVED {path}")
 
 

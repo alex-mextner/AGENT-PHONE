@@ -1,0 +1,10 @@
+================================================================
+slice-check: cuffs-slim-TPU.3mf
+  binary: /Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer
+================================================================
+  OPEN:   PASS  size_x = 40.000000; size_y = 36.000000; size_z = 1.400000; number_of_facets = 284; manifold = yes; number_of_parts =  1; size_x = 23.500000; size_y = 40.124290; size_z = 28.000000; number_of_facets = 1956
+  PLATES: PASS  1 (expected 1)
+  SLICE:  skipped (--no-slice)
+================================================================
+STATUS: PASS - opens OK, 1 plate(s) (slice skipped: --no-slice)
+================================================================

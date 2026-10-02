@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150mm" height="100mm" viewBox="0 0 150 100">
+<rect x="8" y="8" width="92" height="44" rx="5" fill="none" stroke="black" stroke-width="0.3"/>
+<text x="8" y="60" font-size="4">AGENT module footprint 92 x 44 mm</text>
+<rect x="8" y="70" width="10" height="10" fill="none" stroke="black" stroke-width="0.3"/>
+<text x="23" y="77" font-size="3.5">Verify this square is 10 x 10 mm. Print at 100%.</text>
+<text x="8" y="92" font-size="3">Inert fit study only. Cuff and total height are additional.</text></svg>

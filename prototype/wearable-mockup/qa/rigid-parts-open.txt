@@ -1,0 +1,10 @@
+================================================================
+slice-check: rigid-parts.3mf
+  binary: /Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer
+================================================================
+  OPEN:   PASS  size_x = 44.000000; size_y = 92.000000; size_z = 6.600000; number_of_facets = 2470; manifold = yes; number_of_parts =  1; size_x = 40.000000; size_y = 88.000000; size_z = 2.200000; number_of_facets = 1308; size_y = 36.000000; size_z = 4.800000; number_of_facets = 1020
+  PLATES: PASS  1 (expected 1)
+  SLICE:  skipped (--no-slice)
+================================================================
+STATUS: PASS - opens OK, 1 plate(s) (slice skipped: --no-slice)
+================================================================

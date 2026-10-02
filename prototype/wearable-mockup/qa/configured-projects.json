@@ -1,0 +1,97 @@
+[
+  {
+    "file": "plates/snapmaker-u1/cuffs-average-TPU.3mf",
+    "material": "TPU 95A",
+    "machine": "Snapmaker U1 (0.4 nozzle)",
+    "layer_height_mm": 0.2,
+    "walls": 4,
+    "infill_percent": 95,
+    "supports_enabled": false,
+    "geometry_orientation_preserved": true,
+    "part_count": 3,
+    "printer_job_sent": false,
+    "contains_sliced_gcode": false,
+    "sha256": "7fff37abd11ef3c1cdda9a8b3547916a4d44324f5a6ff27e05d409b24ae9bf54",
+    "preset_sha256": {
+      "Snapmaker U1 (0.4 nozzle).json": "77e15f78f7cd1626e0752842c4881afbc019e0b482a857e718bf2e00512c2c9c",
+      "0.20 Standard @Snapmaker U1 (0.4 nozzle).json": "b6964207d220fe0faf802647a8d147a6d920190e6df810858f5d36eea5623c2d",
+      "Snapmaker TPU 95A @U1.json": "1d246120a67423e850f8f0a2a6f0e5564aee9e697bf0448ec2cffcf89eea3942"
+    }
+  },
+  {
+    "file": "plates/snapmaker-u1/cuffs-large-TPU.3mf",
+    "material": "TPU 95A",
+    "machine": "Snapmaker U1 (0.4 nozzle)",
+    "layer_height_mm": 0.2,
+    "walls": 4,
+    "infill_percent": 95,
+    "supports_enabled": false,
+    "geometry_orientation_preserved": true,
+    "part_count": 3,
+    "printer_job_sent": false,
+    "contains_sliced_gcode": false,
+    "sha256": "329c1e49661df77e312364ae93f4380197bf988b9af23734ebbaa82235a6dbce",
+    "preset_sha256": {
+      "Snapmaker U1 (0.4 nozzle).json": "77e15f78f7cd1626e0752842c4881afbc019e0b482a857e718bf2e00512c2c9c",
+      "0.20 Standard @Snapmaker U1 (0.4 nozzle).json": "b6964207d220fe0faf802647a8d147a6d920190e6df810858f5d36eea5623c2d",
+      "Snapmaker TPU 95A @U1.json": "1d246120a67423e850f8f0a2a6f0e5564aee9e697bf0448ec2cffcf89eea3942"
+    }
+  },
+  {
+    "file": "plates/snapmaker-u1/cuffs-slim-TPU.3mf",
+    "material": "TPU 95A",
+    "machine": "Snapmaker U1 (0.4 nozzle)",
+    "layer_height_mm": 0.2,
+    "walls": 4,
+    "infill_percent": 95,
+    "supports_enabled": false,
+    "geometry_orientation_preserved": true,
+    "part_count": 3,
+    "printer_job_sent": false,
+    "contains_sliced_gcode": false,
+    "sha256": "f5713f3d53dbb45cdda60904978a7691bfae655cdce37085e0d71df72cb91238",
+    "preset_sha256": {
+      "Snapmaker U1 (0.4 nozzle).json": "77e15f78f7cd1626e0752842c4881afbc019e0b482a857e718bf2e00512c2c9c",
+      "0.20 Standard @Snapmaker U1 (0.4 nozzle).json": "b6964207d220fe0faf802647a8d147a6d920190e6df810858f5d36eea5623c2d",
+      "Snapmaker TPU 95A @U1.json": "1d246120a67423e850f8f0a2a6f0e5564aee9e697bf0448ec2cffcf89eea3942"
+    }
+  },
+  {
+    "file": "plates/snapmaker-u1/fit-gauges-TPU-first.3mf",
+    "material": "TPU 95A",
+    "machine": "Snapmaker U1 (0.4 nozzle)",
+    "layer_height_mm": 0.2,
+    "walls": 4,
+    "infill_percent": 95,
+    "supports_enabled": false,
+    "geometry_orientation_preserved": true,
+    "part_count": 3,
+    "printer_job_sent": false,
+    "contains_sliced_gcode": false,
+    "sha256": "72d469c01086a36eb7fe9b9c06fe34aac6a8321adbc7c050f5957192a2d25009",
+    "preset_sha256": {
+      "Snapmaker U1 (0.4 nozzle).json": "77e15f78f7cd1626e0752842c4881afbc019e0b482a857e718bf2e00512c2c9c",
+      "0.20 Standard @Snapmaker U1 (0.4 nozzle).json": "b6964207d220fe0faf802647a8d147a6d920190e6df810858f5d36eea5623c2d",
+      "Snapmaker TPU 95A @U1.json": "1d246120a67423e850f8f0a2a6f0e5564aee9e697bf0448ec2cffcf89eea3942"
+    }
+  },
+  {
+    "file": "plates/snapmaker-u1/rigid-parts.3mf",
+    "material": "PETG",
+    "machine": "Snapmaker U1 (0.4 nozzle)",
+    "layer_height_mm": 0.2,
+    "walls": 4,
+    "infill_percent": 95,
+    "supports_enabled": false,
+    "geometry_orientation_preserved": true,
+    "part_count": 3,
+    "printer_job_sent": false,
+    "contains_sliced_gcode": false,
+    "sha256": "c8ec39842eb27db8ecfbc6f1e76375176576dd40776c266b786cbfd0aa759252",
+    "preset_sha256": {
+      "Snapmaker U1 (0.4 nozzle).json": "77e15f78f7cd1626e0752842c4881afbc019e0b482a857e718bf2e00512c2c9c",
+      "0.20 Standard @Snapmaker U1 (0.4 nozzle).json": "b6964207d220fe0faf802647a8d147a6d920190e6df810858f5d36eea5623c2d",
+      "Snapmaker PETG @U1.json": "18f18b8a447b17f66142803e7b6eba259fc0493268bb05edac4de89777e90ba8"
+    }
+  }
+]
